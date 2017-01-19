@@ -1,0 +1,18 @@
+baseurl = "http://www.nicksolmon.me"
+theme = "hugo-uno"
+languageCode = "en-us"
+title = "Nick Solomon"
+author = "Nick Solomon"
+copyright = "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
+
+[Params]
+  AuthorName = "Nick"
+  github = "nicksolomon"
+  twitter = "NickSolomon10"
+  email = "nick@nicksolomon.me"
+  description = "A math undergrad in the Pacific Northwest."
+  cover = "/images/background-cover.jpg"
+  logo = "/images/bio-photo.jpg"
+  [Params.Links]
+    Shiny = {name = "Shiny" , url = "/pages/shiny"}
+    About = {name = "About", url = "/pages/about"}
