@@ -1,4 +1,4 @@
-baseurl = "http://www.nicksolmon.me"
+baseurl = "http://www.nicksolomon.me"
 theme = "hugo-uno"
 languageCode = "en-us"
 title = "Nick Solomon"
@@ -11,7 +11,7 @@ copyright = "This work is licensed under a Creative Commons Attribution-ShareAli
   twitter = "NickSolomon10"
   email = "nick@nicksolomon.me"
   description = "A math undergrad in the Pacific Northwest."
-  cover = "/images/background-cover.jpg"
+  cover = "images/background-cover.jpg"
   logo = "/images/bio-photo.jpg"
   [Params.Links]
     Shiny = {name = "Shiny" , url = "/pages/shiny"}
