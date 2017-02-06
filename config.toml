@@ -12,7 +12,7 @@ copyright = "This work is licensed under a Creative Commons Attribution-ShareAli
   email = "nick@nicksolomon.me"
   description = "A math undergrad in the Pacific Northwest."
   cover = "images/background-cover.jpg"
-  logo = "/images/bio-photo.jpg"
+  logo = "images/bio-photo.jpg"
   [Params.Links]
     Shiny = {name = "Shiny" , url = "/pages/shiny"}
     About = {name = "About", url = "/pages/about"}

@@ -1,0 +1,12 @@
+---
+Description: "Looking at the spread of a measels epidemic using social networks."
+date: 2017-01-23
+title: "Networks and disease"
+---
+
+```{r setup, include=FALSE}
+library(surveillance)
+data("hagelloch")
+```
+
+In 1861 the small town of Hagelloch, Germany experienced a measels outbreak. 
