@@ -5,6 +5,9 @@ title = "Nick Solomon"
 author = "Nick Solomon"
 copyright = "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
 
+ignoreFiles = [ "CONTRIBUTING\\.md$" ]
+
+
 [Params]
   AuthorName = "Nick"
   github = "nicksolomon"
