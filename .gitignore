@@ -1,3 +1,5 @@
 themes/
 public/
 .Rproj.user
+.Rhistory
+blogdown/

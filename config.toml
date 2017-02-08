@@ -17,5 +17,10 @@ ignoreFiles = [ "CONTRIBUTING\\.md$" ]
   cover = "images/background-cover.jpg"
   logo = "images/bio-photo.jpg"
   [Params.Links]
-    Shiny = {name = "Shiny" , url = "/pages/shiny"}
+    Shiny = {name = "Projects" , url = "/pages/projects"}
     About = {name = "About", url = "/pages/about"}
+
+[params]
+  highlightjsVersion = "9.9.0"
+  highlightjsLang = ["r", "yaml"]
+  highlightjsTheme = "github"
