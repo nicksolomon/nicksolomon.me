@@ -1,6 +1,6 @@
 ---
 Description: "Looking at the spread of a measles epidemic using social networks."
-#date:
+date: 2017-02-06
 title: "Networks and disease"
 ---
 
@@ -10,7 +10,7 @@ library(ggraph)
 library(ggforce)
 ```
 
-In 1861 the small town of Hagelloch, Germany experienced a measles outbreak. A doctor very carefully recorded the time of infection and symptoms for each patient. In the 1990's, another German doctor went through all this data and was able to deduce the source of infection of each child. This data set gives us a wealth of information about the spread of disease, but it also allows us the rare opportunity to view disease as spreading over a network.
+In 1861 the small town of Hagelloch, Germany experienced a measles outbreak. A doctor very carefully recorded the time of infection and symptoms for each patient.^[Pfeilsticker, A. (1863). Beiträge zur Pathologie der Masern mit besonderer Berücksichtigung der statistischen Verhältnisse, M.D. Thesis, Eberhard-Karls-Universität Tübingen. Available as http://www.archive.org/details/beitrgezurpatho00pfeigoog.] In the 1990's, another German doctor went through all this data and was able to deduce the source of infection of each child.^[Oesterle, H. (1992). Statistische Reanalyse einer Masernepidemie 1861 in Hagelloch, M.D. Thesis, Eberhard-Karls-Universitäat Tübingen.] This data set gives us a wealth of information about the spread of disease, but it also allows us the rare opportunity to view disease as spreading over a network.
 
 We can load this data set from the `surveillance` package for epidemiological modeling.
 
@@ -25,7 +25,7 @@ This loads two data sets, `hagelloch` and `hagelloch.df`. The `hagelloch` data f
 head(hagelloch.df)
 ```
 
-There's a lot here, but for the moment, let's just focus on are the `PN` and `IFTO` columns. A quick look at documentation for this data (`?hagelloch.df`) tells us that the `PN` column is a unique patient identifier and that the `IFTO` column is the number of the patient who is considered to be the source of infection. This gives us everything we need to make a network! Using the `statnet` suite of packages, we can make a `network` object using the `PN` and `IFTO` columns as an edge list. This is basically just a list of all the edges in the network as ordered pairs of vertices.
+There's a lot here, but for the moment, let's just focus on the `PN` and `IFTO` columns. A quick look at documentation for this data (`?hagelloch.df`) tells us that the `PN` column is a unique patient identifier and that the `IFTO` column is the number of the patient who is considered to be the source of infection. This gives us everything we need to make a network! Using the `statnet` suite of packages, we can make a `network` object using the `PN` and `IFTO` columns as an edge list. This is basically just a list of all the edges in the network as ordered pairs of vertices.
 
 ```{r warning = FALSE, message=FALSE}
 library(statnet)
@@ -79,9 +79,9 @@ for(i in seq_along(hagelloch.df[["tR"]])){
 }
 ```
 
-Now we can plot this with the `ndtv` package and watch the infection evolve over time
+Now we can plot this with the `ndtv` package and watch the infection evolve over time. In this animation, the black nodes are those in the first class, red corresponds to the 2nd class, and green represents preschool.
 
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(ndtv)
 
 render.d3movie(measles_net_dynamic,
@@ -92,32 +92,39 @@ render.d3movie(measles_net_dynamic,
 
 ```
 
-We can also visualize what the infectious population looks like at each time by setting nodes to only be active when they are infectious.
+We can also visualize what the infectious population looks like at each time by setting edges to only be active when nodes they are connected to are infectious. We'll make a similar animation, but here the edges will only last during the infectious period of the nodes and we'll color infectious nodes red and non-infections nodes gray.
 
-```{r}
+```{r message = FALSE, warning = FALSE}
 measles_net_dynamic2 <- measles_net
-
-#deactivate.vertices(measles_net_dynamic2)
-#deactivate.edges(measles_net_dynamic2)
 
 for(i in seq_along(hagelloch.df[["tR"]])){
   if(!is.na(hagelloch.df[[i,"IFTO"]])){
     activate.edges(measles_net_dynamic2,
                    onset = floor(hagelloch.df[[i, "tI"]]),
-                   length = floor(hagelloch.df[[i, "tR"]])-floor(hagelloch.df[[i, "tI"]]),
+                   terminus = floor(hagelloch.df[[i, "tR"]]), # now edges end when no longer infectious
                    e = get.edgeIDs(measles_net_dynamic2, v = hagelloch.df[[i,"IFTO"]], alter = i))
-    # activate.vertices(measles_net_dynamic2, 
-    #                onset = floor(hagelloch.df[[i, "tI"]]), # tI contains jittered time of infection
-    #                terminus = floor(hagelloch.df[[i, "tR"]]),
-    #                v = i) # Edges stay active forever
-    #                # which edge are we talking about
   }
 }
 
-compute.animation(measles_net_dynamic2, slice.par = list(start = 7, end = 45, interval = 1, aggregate.dur = 1, rule = "latest"))
+col_fun <- function(slice){
+  # a function that takes the network at a given time and 
+  # colors the nodes red if they're infectious and gray
+  # otherwise
+  colors <- rep("gray", network.size(slice))
+  edges <- as.edgelist(slice)
+  for(i in 1:network.size(slice)){
+    if(i %in% edges[,1] || i %in% edges[,2]) colors[i] <- "red"
+  }
+  return(colors)
+}
 
 render.d3movie(measles_net_dynamic2,
-               slice.par = list(rule = "any"),
+               plot.par = list(
+                 vertex.col = col_fun
+               ),
                output.mode = "htmlWidget")
 ```
 
+Here we can see that children tend to infect a small number of other people, which is visible in the network as many small clusters of nodes apearring and disappearing. However, it is interesting to note that there is one outlier, node 45, who infected `r degree(measles_net, nodes = 45, cmode = "outdegree")` people. Judging from this animation, it seems like this infection was a catalyst for the rest of the outbreak. A few days after all of the children infected by node 45 became infectious, we see the sudden spread of infection throughout a large part of the network and the development of many small clusters of red nodes.
+
+This data set presents a unique opportunity to investigate the spread of a disease through the lens of network analysis. These visualizations are only the first step towards identifying interesting aspects of the network to model. For example, a 2012 paper examined this data set as representing a partial observation of a pre-existing underlying social network and applied Bayesian methods to model sociological and epidemiological characteristics of the population and the outbreak.^[Groendyke, C., Welch, D. and Hunter, D. R. (2012), A Network-based Analysis of the 1861 Hagelloch Measles Data. Biometrics, 68: 755–765. doi:10.1111/j.1541-0420.2012.01748.x]
