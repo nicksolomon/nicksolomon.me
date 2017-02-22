@@ -13,7 +13,7 @@ ignoreFiles = [ "CONTRIBUTING\\.md$" ]
   github = "nicksolomon"
   twitter = "NickSolomon10"
   email = "nick@nicksolomon.me"
-  description = "A futur data scientist in the Pacific Northwest."
+  description = "A future data scientist in the Pacific Northwest."
   cover = "images/background-cover.jpg"
   logo = "images/bio-photo.jpg"
   [Params.Links]
