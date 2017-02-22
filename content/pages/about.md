@@ -7,7 +7,7 @@ draft = false
 
 I’m a senior undergrad doing math at a tiny liberal arts college in the Pacific Northwest.
 
-I like statistics and R.
+I like statistics, R and Python.
 
 I’m writing a thesis about network models and disease transmission, see my blog for updates.
 
