@@ -45,7 +45,7 @@ ggraph(measles_net) +
 
 Great! We've made a network that represents the spread of measles during the outbreak, but what does it tell us? Right now, not much. We can see who infected who, but without knowing more about the individual patients, we can't really learn a lot about how the disease spread. Taking a second look at our data frame, it seems like there's a few covariates that could be of interest. We'll pull out `AGE`, `SEX`, and `CL` (which class in school the child was in) and add them to our network as vertex attributes.
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 vertex_attrs <- hagelloch.df %>% 
   select(AGE, SEX, CL) %>% 
   mutate(SEX = as.character(SEX), CL = as.character(CL))
