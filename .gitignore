@@ -3,3 +3,6 @@ public/
 .Rproj.user
 .Rhistory
 blogdown/
+content/post/*_cache/*
+content/post/*_files/*
+*.RData

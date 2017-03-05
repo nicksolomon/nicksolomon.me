@@ -1,0 +1,127 @@
+---
+title: How is Oregon Motor Voter affecting different counties?
+date: '2017-03-01'
+author: Nick Solomon
+---
+
+<!-- BLOGDOWN-HEAD -->
+
+
+
+<!-- /BLOGDOWN-HEAD -->
+
+<!-- BLOGDOWN-BODY-BEFORE -->
+
+<!-- /BLOGDOWN-BODY-BEFORE -->
+
+<p><em>(This is a companion to my post on Paul Gronke’s <a href="http://earlyvoting.net/commentary/how-is-oregon-motor-voter-affecting-different-counties/">earlyvoting.net</a>)</em></p>
+<p>One of the first assignments we had in my <a href="http://earlyvoting.net/evic-news/upcoming-election-scientists-look-at-oregon-motor-voter/">Election Sciences course</a> was to take a look at registration data from the Oregon Motor Voter program and try to find interesting patterns. For those who don’t know, Oregon Motor Voter is an automatic voter registration program in Oregon. Whenever someone interacts with the Oregon DMV, their voter eligibility is automatically checked, and if they are eligible to vote but not registered, they are automatically added to the rolls. The first phase of the program registered Oregonians as they interacted with the DMV, while the second phase combed through past records and registered people who had already visited the DMV.</p>
+<p>My approach to this problem was geographic. I had county level locations for each voter, so I decided to plot the proportion of voters who were automatically registered in each county, along with their party affiliation. This took some wrangling to get from the raw data to something I could easily plot. This data can be requested from the <a href="http://sos.oregon.gov/elections/Pages/data-request.aspx">State of Oregon</a>.</p>
+<pre class="r"><code>library(tidyverse)
+library(lubridate)
+library(ggforce)
+library(scales)
+library(forcats)
+
+load(&quot;data/voter_data.RData&quot;)
+glimpse(or_movo)</code></pre>
+<pre><code>## Observations: 263,727
+## Variables: 3
+## $ VOTER_ID    &lt;int&gt; 358947, 427915, 541516, 574177, 660255, 660801, 66...
+## $ DESCRIPTION &lt;chr&gt; &quot;MVPhase2&quot;, &quot;MVPhase2&quot;, &quot;MVPhase2&quot;, &quot;MVPhase2&quot;, &quot;M...
+## $ COUNTY      &lt;chr&gt; &quot;JACKSON&quot;, &quot;BENTON&quot;, &quot;LANE&quot;, &quot;CLACKAMAS&quot;, &quot;UNION&quot;,...</code></pre>
+<pre class="r"><code>glimpse(or_regi)</code></pre>
+<pre><code>## Observations: 3,008,433
+## Variables: 7
+## $ VOTER_ID      &lt;int&gt; 100743763, 100743762, 100783979, 100505034, 1190...
+## $ BIRTH_DATE    &lt;chr&gt; &quot;07-15-1966&quot;, &quot;02-17-1965&quot;, &quot;04-19-1997&quot;, &quot;10-04...
+## $ CONFIDENTIAL  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+## $ EFF_REGN_DATE &lt;chr&gt; &quot;08-31-2016&quot;, &quot;09-20-2016&quot;, &quot;12-05-2016&quot;, &quot;10-18...
+## $ STATUS        &lt;chr&gt; &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;...
+## $ PARTY_CODE    &lt;chr&gt; &quot;NAV&quot;, &quot;NAV&quot;, &quot;DEM&quot;, &quot;IND&quot;, &quot;DEM&quot;, &quot;REP&quot;, &quot;LBT&quot;,...
+## $ COUNTY        &lt;chr&gt; &quot;YAMHILL&quot;, &quot;YAMHILL&quot;, &quot;YAMHILL&quot;, &quot;YAMHILL&quot;, &quot;YAM...</code></pre>
+<p>So our first step is to join these two data sets by the <code>VOTER_ID</code> column. Unfortunately, there are a few duplicated IDs because of voters who moved from one county to the other, so I excluded duplicates.</p>
+<pre class="r"><code>or_voter &lt;- or_regi %&gt;% 
+  distinct(VOTER_ID, .keep_all = TRUE) %&gt;% 
+  left_join(
+    distinct(or_movo, VOTER_ID, .keep_all = TRUE),
+    by = &quot;VOTER_ID&quot;, suffix = c(&quot;_REGI&quot;, &quot;_MOVO&quot;))</code></pre>
+<p>This data still needs some work, though. We want the dates to be actual dates, not character columns, and there are two classes of voters we want to remove from our calculations. First, we filter out inactive voters, who are no longer eligible to vote, then we remove confidential voters. These individuals have had their personal data removed from the voter data files, generally for protection from domestic abuse.</p>
+<pre class="r"><code>or_voter &lt;- or_voter %&gt;%
+  mutate(DESCRIPTION = ifelse(is.na(DESCRIPTION), &quot;Traditional&quot;, DESCRIPTION)) %&gt;% 
+  mutate(BIRTH_DATE = as_date(BIRTH_DATE, format = &quot;%m-%d-%Y&quot;)) %&gt;% 
+  mutate(EFF_REGN_DATE = as_date(EFF_REGN_DATE, format = &quot;%m-%d-%Y&quot;)) %&gt;% 
+  filter(is.na(CONFIDENTIAL)) %&gt;% 
+  filter(STATUS == &quot;A&quot;) %&gt;% 
+  filter(BIRTH_DATE &gt; as_date(&quot;1902-1-1&quot;))</code></pre>
+<p>Next we want to group voters by county and figure out what percentage of registered voters in each county were registered by the Motor Voter program, then we re-code the party codes to group small parties into an <code>Other</code> category and give the large parties more informative names.</p>
+<pre class="r"><code>or_voter_county &lt;- or_voter %&gt;%
+  mutate(MV = ifelse(DESCRIPTION == &quot;Traditional&quot;, FALSE, TRUE)) %&gt;% 
+  group_by(COUNTY_REGI, PARTY_CODE) %&gt;% 
+  summarize(N = n(), NUM_MOVO = sum(MV)) %&gt;% 
+  group_by(COUNTY_REGI) %&gt;% 
+  mutate(TOTAL = sum(N)) %&gt;% 
+  mutate(PROP_MOVO = NUM_MOVO/TOTAL) %&gt;% 
+  group_by(COUNTY_REGI) %&gt;% 
+  mutate(TOTAL_PROP = sum(PROP_MOVO))
+
+or_voter_county$PARTY_CODE &lt;- as.factor(or_voter_county$PARTY_CODE)
+
+or_voter_county$PARTY_CODE &lt;- or_voter_county$PARTY_CODE %&gt;% 
+  fct_recode(Democrat = &quot;DEM&quot;,
+             Republican = &quot;REP&quot;,
+             NonAffiliated = &quot;NAV&quot;,
+             Other = &quot;AME&quot;,
+             Other = &quot;CON&quot;,
+             Other = &quot;IND&quot;,
+             Other = &quot;LBT&quot;,
+             Other = &quot;NP&quot;,
+             Other = &quot;OTH&quot;,
+             Other = &quot;PGP&quot;,
+             Other = &quot;PRO&quot;,
+             Other = &quot;WFP&quot;)</code></pre>
+<p>Now we’re ready to make our plot!</p>
+<pre class="r"><code>ggplot(or_voter_county, aes(reorder(COUNTY_REGI, TOTAL_PROP), PROP_MOVO)) + 
+  geom_col(aes(fill = PARTY_CODE)) +
+  geom_text(aes(x = COUNTY_REGI,
+                y = TOTAL_PROP,
+                label = paste(round(TOTAL_PROP*100,1), &quot;%&quot;, sep = &quot;&quot;)),
+            data = distinct(or_voter_county, COUNTY_REGI, .keep_all = TRUE),
+            inherit.aes = FALSE,
+            nudge_y = .003,
+            size = 2.5,
+            check_overlap = TRUE) +
+  scale_fill_manual(values = c(&quot;green&quot;,
+                               &quot;blue&quot;,
+                               &quot;purple&quot;,
+                               &quot;red&quot;)) +
+  scale_y_continuous(labels = percent) +
+  labs(title = &quot;Percent of voters registered via OMV by county&quot;, 
+       x = &quot;County&quot;, y = &quot;Percent of voters&quot;, fill = &quot;Party&quot;) +
+  scale_x_discrete(expand = c(.02, .02)) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90))</code></pre>
+<p><img src="#####content/post/2017-03-01-how-is-oregon-motor-voter-affecting-different-counties_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Clearly, most voters are registered as Nonaffiliated, meaning they never opted into a party affiliation. It’s also interesting that OMV is so effective is rural counties. To check whether this is a true trend, or just a function of small population in those counties, we can plot the total number of registered voters against the percentage of voters registered automatically.</p>
+<pre class="r"><code>or_voter_county2 &lt;- or_voter_county %&gt;% 
+  group_by(COUNTY_REGI) %&gt;% 
+  summarise(MV_PROP = mean(TOTAL_PROP))
+
+temp &lt;- or_voter %&gt;% 
+  group_by(COUNTY_REGI) %&gt;% 
+  summarise(TOTAL = n())
+
+or_voter_county2 &lt;- or_voter_county2 %&gt;% 
+  left_join(temp, by = &quot;COUNTY_REGI&quot;)
+
+ggplot(or_voter_county2, aes(TOTAL, MV_PROP)) +
+  scale_x_log10(expand = c(.05, .15)) +
+  geom_point() +
+  geom_text(aes(label = COUNTY_REGI), check_overlap = TRUE, nudge_y = .0026) +
+  labs(title = &quot;Percent of voters registered via OMV&quot;,
+       x = &quot;log(Total registered voters)&quot;,
+       y = &quot;Percent of voters&quot;) +
+  scale_y_continuous(labels = percent) +
+  theme_minimal()</code></pre>
+<p><img src="#####content/post/2017-03-01-how-is-oregon-motor-voter-affecting-different-counties_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>The log transformation of the x-axis prevents huge counties in the Portland metro area from dominating the plot, so we can get a better sense of the relationship between these two variables. To my eye, it seems that there is no meaningful correlation here. Additionally, Malheur county (which has the highest proportion of OMV registrants) seems to be the extreme end of a sizable cluster, so is not that unusual. Therefore, I come to the conclusion that Oregon’s automatic voter registration program is more effective in rural counties like Malheur.</p>
