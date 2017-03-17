@@ -5,9 +5,11 @@ title: "Networks and disease"
 ---
 
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
 library(dplyr)
 library(ggraph)
 library(ggforce)
+library(statnet)
 ```
 
 In 1861 the small town of Hagelloch, Germany experienced a measles outbreak. A doctor very carefully recorded the time of infection and symptoms for each patient.^[Pfeilsticker, A. (1863). Beiträge zur Pathologie der Masern mit besonderer Berücksichtigung der statistischen Verhältnisse, M.D. Thesis, Eberhard-Karls-Universität Tübingen. Available as http://www.archive.org/details/beitrgezurpatho00pfeigoog.] In the 1990's, another German doctor went through all this data and was able to deduce the source of infection of each child.^[Oesterle, H. (1992). Statistische Reanalyse einer Masernepidemie 1861 in Hagelloch, M.D. Thesis, Eberhard-Karls-Universitäat Tübingen.] This data set gives us a wealth of information about the spread of disease, but it also allows us the rare opportunity to view disease as spreading over a network.
@@ -28,8 +30,6 @@ head(hagelloch.df)
 There's a lot here, but for the moment, let's just focus on the `PN` and `IFTO` columns. A quick look at documentation for this data (`?hagelloch.df`) tells us that the `PN` column is a unique patient identifier and that the `IFTO` column is the number of the patient who is considered to be the source of infection. This gives us everything we need to make a network! Using the `statnet` suite of packages, we can make a `network` object using the `PN` and `IFTO` columns as an edge list. This is basically just a list of all the edges in the network as ordered pairs of vertices.
 
 ```{r warning = FALSE, message=FALSE}
-library(statnet)
-
 edges <- hagelloch.df %>% 
   select(IFTO, PN) %>%  # edge lists take the source of the connection first
   filter(!is.na(IFTO)) # not every patient has a known source of infection

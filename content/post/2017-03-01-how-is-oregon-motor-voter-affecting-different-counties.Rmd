@@ -4,7 +4,7 @@ date: '2017-03-01'
 author: Nick Solomon
 ---
 ```{r include=FALSE}
-knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
+knitr::opts_chunk$set(warnings = FALSE, message = FALSE, cache = TRUE)
 ```
 
 *(This is a companion to my post on Paul Gronke's [earlyvoting.net](http://earlyvoting.net/commentary/how-is-oregon-motor-voter-affecting-different-counties/))*

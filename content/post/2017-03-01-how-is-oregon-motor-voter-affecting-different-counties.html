@@ -4,15 +4,6 @@ date: '2017-03-01'
 author: Nick Solomon
 ---
 
-<!-- BLOGDOWN-HEAD -->
-
-
-
-<!-- /BLOGDOWN-HEAD -->
-
-<!-- BLOGDOWN-BODY-BEFORE -->
-
-<!-- /BLOGDOWN-BODY-BEFORE -->
 
 <p><em>(This is a companion to my post on Paul Gronke’s <a href="http://earlyvoting.net/commentary/how-is-oregon-motor-voter-affecting-different-counties/">earlyvoting.net</a>)</em></p>
 <p>One of the first assignments we had in my <a href="http://earlyvoting.net/evic-news/upcoming-election-scientists-look-at-oregon-motor-voter/">Election Sciences course</a> was to take a look at registration data from the Oregon Motor Voter program and try to find interesting patterns. For those who don’t know, Oregon Motor Voter is an automatic voter registration program in Oregon. Whenever someone interacts with the Oregon DMV, their voter eligibility is automatically checked, and if they are eligible to vote but not registered, they are automatically added to the rolls. The first phase of the program registered Oregonians as they interacted with the DMV, while the second phase combed through past records and registered people who had already visited the DMV.</p>
@@ -101,7 +92,7 @@ or_voter_county$PARTY_CODE &lt;- or_voter_county$PARTY_CODE %&gt;%
   scale_x_discrete(expand = c(.02, .02)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 90))</code></pre>
-<p><img src="#####content/post/2017-03-01-how-is-oregon-motor-voter-affecting-different-counties_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/post/2017-03-01-how-is-oregon-motor-voter-affecting-different-counties_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Clearly, most voters are registered as Nonaffiliated, meaning they never opted into a party affiliation. It’s also interesting that OMV is so effective is rural counties. To check whether this is a true trend, or just a function of small population in those counties, we can plot the total number of registered voters against the percentage of voters registered automatically.</p>
 <pre class="r"><code>or_voter_county2 &lt;- or_voter_county %&gt;% 
   group_by(COUNTY_REGI) %&gt;% 
@@ -123,5 +114,5 @@ ggplot(or_voter_county2, aes(TOTAL, MV_PROP)) +
        y = &quot;Percent of voters&quot;) +
   scale_y_continuous(labels = percent) +
   theme_minimal()</code></pre>
-<p><img src="#####content/post/2017-03-01-how-is-oregon-motor-voter-affecting-different-counties_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/post/2017-03-01-how-is-oregon-motor-voter-affecting-different-counties_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>The log transformation of the x-axis prevents huge counties in the Portland metro area from dominating the plot, so we can get a better sense of the relationship between these two variables. To my eye, it seems that there is no meaningful correlation here. Additionally, Malheur county (which has the highest proportion of OMV registrants) seems to be the extreme end of a sizable cluster, so is not that unusual. Therefore, I come to the conclusion that Oregon’s automatic voter registration program is more effective in rural counties like Malheur.</p>

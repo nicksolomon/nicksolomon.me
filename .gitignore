@@ -6,3 +6,5 @@ blogdown/
 content/post/*_cache/*
 content/post/*_files/*
 *.RData
+static/post
+static/rmarkdown-libs
