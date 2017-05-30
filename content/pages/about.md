@@ -5,10 +5,10 @@ draft = false
 
 +++
 
-I’m a senior undergrad doing math at a tiny liberal arts college in the Pacific Northwest.
+I'm working on course development with DataCamp
 
 I like statistics, R, and Python.
 
-I’m writing a thesis about network models and disease transmission, see my blog for updates.
+I wrote a thesis about [asymptotic properties of network models.](/thesis)
 
 All the photos were taken by me with a Minolta X-370 in various places in Oregon, Washington, and Maine.
