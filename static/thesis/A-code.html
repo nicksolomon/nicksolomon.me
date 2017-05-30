@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Local Dependence in Exponential Random Network Models</title>
+  <meta name="description" content="Local Dependence in Exponential Random Network Models">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Local Dependence in Exponential Random Network Models" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Local Dependence in Exponential Random Network Models" />
+  
+  
+  
+
+<meta name="author" content="Nicholas Solomon">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="4-discussion-and-examples.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-graphs"><i class="fa fa-check"></i><b>1.1</b> Random graphs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#network-modeling"><i class="fa fa-check"></i><b>1.2</b> Network modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html"><i class="fa fa-check"></i><b>2</b> Exponential random graph models</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#finding-parameter-estimates"><i class="fa fa-check"></i><b>2.1</b> Finding parameter estimates</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#frequentist-methods"><i class="fa fa-check"></i><b>2.1.1</b> Frequentist methods</a></li>
+<li class="chapter" data-level="2.1.2" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#bayesian-methods"><i class="fa fa-check"></i><b>2.1.2</b> Bayesian methods</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#examples"><i class="fa fa-check"></i><b>2.2</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html"><i class="fa fa-check"></i><b>3</b> Locally dependent exponential random network models</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#definitions-and-notation"><i class="fa fa-check"></i><b>3.1</b> Definitions and notation</a></li>
+<li class="chapter" data-level="3.2" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#preliminary-theorems"><i class="fa fa-check"></i><b>3.2</b> Preliminary theorems</a></li>
+<li class="chapter" data-level="3.3" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#consistency-under-sampling"><i class="fa fa-check"></i><b>3.3</b> Consistency under sampling</a></li>
+<li class="chapter" data-level="3.4" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#asymptotic-normality-of-statistics"><i class="fa fa-check"></i><b>3.4</b> Asymptotic normality of statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html"><i class="fa fa-check"></i><b>4</b> Discussion and examples</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html#examples-of-convergence"><i class="fa fa-check"></i><b>4.1</b> Examples of convergence</a></li>
+<li class="chapter" data-level="4.2" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html#standard-error-estimation"><i class="fa fa-check"></i><b>4.2</b> Standard error estimation</a></li>
+<li class="chapter" data-level="4.3" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html#discussion-of-future-work"><i class="fa fa-check"></i><b>4.3</b> Discussion of future work</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-code.html"><a href="A-code.html"><i class="fa fa-check"></i><b>A</b> Code</a><ul>
+<li class="chapter" data-level="A.1" data-path="A-code.html"><a href="A-code.html#network-simulation-code"><i class="fa fa-check"></i><b>A.1</b> Network simulation code</a></li>
+<li class="chapter" data-level="A.2" data-path="A-code.html"><a href="A-code.html#jackknife-standard-error-code"><i class="fa fa-check"></i><b>A.2</b> Jackknife standard error code</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Local Dependence in Exponential Random Network Models</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="code" class="section level1">
+<h1><span class="header-section-number">A</span> Code</h1>
+<p>All source materials used to write this thesis are available in the Reed College Library’s digital thesis archive. This appendix contains the most important code used in the final chapter.</p>
+<div id="network-simulation-code" class="section level2">
+<h2><span class="header-section-number">A.1</span> Network simulation code</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if(!<span class="kw">require</span>(devtools))
+  <span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;http://cran.rstudio.com&quot;</span>)
+if(!<span class="kw">require</span>(thesisdown))
+  devtools::<span class="kw">install_github</span>(<span class="st">&quot;ismayc/thesisdown&quot;</span>)
+<span class="kw">library</span>(thesisdown)
+
+<span class="kw">library</span>(statnet)
+<span class="kw">library</span>(Bergm)
+<span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(broom)
+<span class="kw">library</span>(ggraph)
+<span class="kw">library</span>(purrr)
+<span class="kw">library</span>(Rcpp)
+<span class="kw">library</span>(knitr)</code></pre></div>
+<p>The following C++ code, compiled into a shared library using the <code>Rcpp</code> package, gives function definitions used in simulating networks <span class="citation">(Eddelbuettel &amp; Francois, <a href="#ref-Eddelbuettel2011">2011</a>)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;Rcpp.h&gt;</span>
+
+<span class="kw">using</span> <span class="kw">namespace</span> Rcpp;
+
+<span class="co">//[[Rcpp::export]]</span>
+IntegerMatrix make_adj(List vert_df){
+  NumericVector vert = vert_df[<span class="st">&quot;vert&quot;</span>];
+  NumericVector nbhd = vert_df[<span class="st">&quot;nbhd&quot;</span>];
+  NumericVector grp = vert_df[<span class="st">&quot;grp&quot;</span>];
+  <span class="dt">double</span> n = vert.size();
+  
+  IntegerMatrix adj_mat(n,n);
+  
+  <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++){
+    <span class="kw">for</span>(<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; n; j++){
+      <span class="kw">if</span>(nbhd[i] == nbhd[j]){
+        <span class="kw">if</span>(grp[i] == grp[j]){
+          adj_mat(i,j) = as&lt;<span class="dt">int</span>&gt;(rbinom(<span class="dv">1</span>,<span class="dv">1</span>,<span class="fl">.3</span>));
+          <span class="kw">continue</span>;
+        } <span class="kw">else</span> {
+          adj_mat(i,j) = as&lt;<span class="dt">int</span>&gt;(rbinom(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.1</span>));
+          <span class="kw">continue</span>;
+          }
+      } <span class="kw">else</span>{       
+        adj_mat(i,j) = as&lt;<span class="dt">int</span>&gt;(rbinom(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">50</span>/(n*n)));
+        <span class="kw">continue</span>;
+      }
+    }
+  }
+
+  <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; n/<span class="dv">10</span>; i++){
+    <span class="kw">for</span>(<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; n; j++){
+      <span class="kw">for</span>(<span class="dt">int</span> k = <span class="dv">0</span>; k &lt; n; k++){
+        <span class="kw">for</span>(<span class="dt">int</span> l = <span class="dv">0</span>; l &lt; n; l++){
+          <span class="kw">if</span>(nbhd[j] == i &amp;&amp;
+             nbhd[k] == i &amp;&amp;
+             nbhd[l] == i){
+            <span class="kw">if</span>(adj_mat(j, k) == <span class="dv">1</span> &amp;&amp;
+               adj_mat(k, l) == <span class="dv">1</span> &amp;&amp;
+               adj_mat(j, l) == <span class="dv">0</span>){
+              adj_mat(j, l) = as&lt;<span class="dt">int</span>&gt;(rbinom(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.75</span>));
+            }
+          }
+        }
+      }
+    }
+  }
+
+  <span class="kw">return</span> adj_mat;
+}
+
+<span class="co">//[[Rcpp::export]]</span>
+IntegerVector make_attr(List vert_df, IntegerMatrix adj_mat){
+  IntegerVector attr = vert_df[<span class="st">&quot;attr&quot;</span>];
+  IntegerVector nbhd = vert_df[<span class="st">&quot;nbhd&quot;</span>];
+  <span class="dt">int</span> n = attr.size();
+  <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; n; i++){
+    <span class="kw">for</span>(<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; n; j++){
+      <span class="kw">if</span>(attr[i] == <span class="dv">1</span> &amp;&amp; adj_mat(i,j) == <span class="dv">1</span> &amp;&amp; nbhd[i] == nbhd[j]){
+        attr[j] = as&lt;<span class="dt">int</span>&gt;(rbinom(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.75</span>));
+      }<span class="kw">else</span> <span class="kw">if</span>(adj_mat(i,j) == <span class="dv">1</span> &amp;&amp; nbhd[i] == nbhd[j]){
+        attr[j] = as&lt;<span class="dt">int</span>&gt;(rbinom(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.1</span>));
+      }
+    }
+  }
+  <span class="kw">return</span> attr;
+}</code></pre></div>
+<p>This R code generates networks and computes the three chosen statistics for each one. The final result is a data set of networks and corresponding statistics used to produce density and quantile-quantile plots.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">make_net &lt;-<span class="st"> </span>function(n){
+  vert_df &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">vert =</span> <span class="dv">1</span>:n)
+  nbhds &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="kw">floor</span>(n/<span class="dv">10</span>)
+  vert_df &lt;-<span class="st"> </span>vert_df %&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">nbhd =</span> <span class="kw">sample</span>(nbhds, n, <span class="dt">replace =</span> <span class="ot">TRUE</span>),
+           <span class="dt">grp =</span> <span class="kw">rbinom</span>(n, <span class="dv">1</span>, .<span class="dv">5</span>),
+           <span class="dt">attr =</span> <span class="kw">rbinom</span>(n, <span class="dv">1</span>, .<span class="dv">3</span>))
+  
+  adj_mat &lt;-<span class="st"> </span><span class="kw">make_adj</span>(vert_df)
+  
+  vert_df$attr &lt;-<span class="st"> </span><span class="kw">make_attr</span>(vert_df, adj_mat)
+  
+  net &lt;-<span class="st"> </span><span class="kw">network</span>(adj_mat)
+  net %v%<span class="st"> &quot;group&quot;</span> &lt;-<span class="st"> </span>vert_df$grp
+  net %v%<span class="st"> &quot;attribute&quot;</span> &lt;-<span class="st"> </span>vert_df$attr
+  net %v%<span class="st"> &quot;nbhd&quot;</span> &lt;-<span class="st"> </span>vert_df$nbhd
+  
+  <span class="kw">return</span>(net)
+}
+
+node_match &lt;-<span class="st"> </span>function(net){
+  edge_list &lt;-<span class="st"> </span><span class="kw">as.edgelist</span>(net)
+  grps &lt;-<span class="st"> </span>net %v%<span class="st"> &quot;group&quot;</span>
+  num &lt;-<span class="st"> </span><span class="dv">0</span>
+  for(i in <span class="dv">1</span>:<span class="kw">nrow</span>(edge_list)){
+    if(grps[edge_list[i, <span class="dv">1</span>]] ==<span class="st"> </span>grps[edge_list[i,<span class="dv">2</span>]]) num &lt;-<span class="st"> </span>num +<span class="st"> </span><span class="dv">1</span>
+  }
+  num/<span class="kw">nrow</span>(edge_list)
+}
+n_reps &lt;-<span class="st"> </span><span class="dv">500</span>
+results &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">num =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">20</span>, n_reps),
+                        <span class="kw">rep</span>(<span class="dv">50</span>, n_reps),
+                        <span class="kw">rep</span>(<span class="dv">100</span>, n_reps),
+                        <span class="kw">rep</span>(<span class="dv">200</span>, n_reps)))
+results &lt;-<span class="st"> </span>results %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">net =</span> <span class="kw">map</span>(num, make_net),
+         <span class="dt">mean_deg =</span> <span class="kw">map_dbl</span>(net, ~<span class="st"> </span><span class="kw">mean</span>(<span class="kw">degree</span>(.x))),
+         <span class="dt">mean_attr =</span> <span class="kw">map_dbl</span>(net, ~<span class="st"> </span><span class="kw">mean</span>(.x %v%<span class="st"> &quot;attribute&quot;</span>)),
+         <span class="dt">prop_homo =</span> <span class="kw">map_dbl</span>(net, node_match))
+
+results &lt;-<span class="st"> </span>results %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(stat, value, -(num:net))</code></pre></div>
+</div>
+<div id="jackknife-standard-error-code" class="section level2">
+<h2><span class="header-section-number">A.2</span> Jackknife standard error code</h2>
+<p>This code computes the neighborhood level standard error estimates for statistics of the graph.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n_vert &lt;-<span class="st"> </span><span class="dv">200</span>
+net &lt;-<span class="st"> </span><span class="kw">make_net</span>(n_vert)
+
+nbhds &lt;-<span class="st"> </span>net %v%<span class="st"> &quot;nbhd&quot;</span>
+num_nbhds &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">unique</span>(nbhds))
+boot3 &lt;-<span class="st"> </span><span class="kw">numeric</span>(num_nbhds)
+
+jack_df &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">mean_deg =</span> <span class="kw">numeric</span>(num_nbhds),
+                  <span class="dt">mean_attr =</span> <span class="kw">numeric</span>(num_nbhds),
+                  <span class="dt">prop_homo =</span> <span class="kw">numeric</span>(num_nbhds))
+
+for(i in <span class="dv">1</span>:num_nbhds){
+  temp_net &lt;-<span class="st"> </span><span class="kw">rm_vertex</span>(net, <span class="kw">which</span>(nbhds ==<span class="st"> </span>i))
+  jack_df$mean_deg[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">degree</span>(temp_net))
+  jack_df$mean_attr[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(temp_net %v%<span class="st"> &quot;attribute&quot;</span>)
+  jack_df$prop_homo[i] &lt;-<span class="st"> </span><span class="kw">node_match</span>(temp_net)
+}
+
+jack_df &lt;-<span class="st"> </span>jack_df %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(stat, value) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(stat) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">jack_sd =</span> <span class="kw">sqrt</span>((num_nbhds -<span class="st"> </span><span class="dv">1</span>)/num_nbhds *<span class="st"> </span>
+<span class="st">                             </span><span class="kw">sum</span>((value -<span class="st"> </span><span class="kw">mean</span>(value))^<span class="dv">2</span>)))</code></pre></div>
+
+<p></p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Eddelbuettel2011">
+<p>Eddelbuettel, D., &amp; Francois, R. (2011). Rcpp: Seamless R and C++ integration. <em>Journal of Statistical Software</em>, (40, 8).</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="4-discussion-and-examples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": "thesis.pdf",
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

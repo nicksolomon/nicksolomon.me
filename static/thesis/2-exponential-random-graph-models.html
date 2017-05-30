@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Local Dependence in Exponential Random Network Models</title>
+  <meta name="description" content="Local Dependence in Exponential Random Network Models">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Local Dependence in Exponential Random Network Models" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Local Dependence in Exponential Random Network Models" />
+  
+  
+  
+
+<meta name="author" content="Nicholas Solomon">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="3-locally-dependent-exponential-random-network-models.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-graphs"><i class="fa fa-check"></i><b>1.1</b> Random graphs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#network-modeling"><i class="fa fa-check"></i><b>1.2</b> Network modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html"><i class="fa fa-check"></i><b>2</b> Exponential random graph models</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#finding-parameter-estimates"><i class="fa fa-check"></i><b>2.1</b> Finding parameter estimates</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#frequentist-methods"><i class="fa fa-check"></i><b>2.1.1</b> Frequentist methods</a></li>
+<li class="chapter" data-level="2.1.2" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#bayesian-methods"><i class="fa fa-check"></i><b>2.1.2</b> Bayesian methods</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#examples"><i class="fa fa-check"></i><b>2.2</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html"><i class="fa fa-check"></i><b>3</b> Locally dependent exponential random network models</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#definitions-and-notation"><i class="fa fa-check"></i><b>3.1</b> Definitions and notation</a></li>
+<li class="chapter" data-level="3.2" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#preliminary-theorems"><i class="fa fa-check"></i><b>3.2</b> Preliminary theorems</a></li>
+<li class="chapter" data-level="3.3" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#consistency-under-sampling"><i class="fa fa-check"></i><b>3.3</b> Consistency under sampling</a></li>
+<li class="chapter" data-level="3.4" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#asymptotic-normality-of-statistics"><i class="fa fa-check"></i><b>3.4</b> Asymptotic normality of statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html"><i class="fa fa-check"></i><b>4</b> Discussion and examples</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html#examples-of-convergence"><i class="fa fa-check"></i><b>4.1</b> Examples of convergence</a></li>
+<li class="chapter" data-level="4.2" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html#standard-error-estimation"><i class="fa fa-check"></i><b>4.2</b> Standard error estimation</a></li>
+<li class="chapter" data-level="4.3" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html#discussion-of-future-work"><i class="fa fa-check"></i><b>4.3</b> Discussion of future work</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-code.html"><a href="A-code.html"><i class="fa fa-check"></i><b>A</b> Code</a><ul>
+<li class="chapter" data-level="A.1" data-path="A-code.html"><a href="A-code.html#network-simulation-code"><i class="fa fa-check"></i><b>A.1</b> Network simulation code</a></li>
+<li class="chapter" data-level="A.2" data-path="A-code.html"><a href="A-code.html#jackknife-standard-error-code"><i class="fa fa-check"></i><b>A.2</b> Jackknife standard error code</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Local Dependence in Exponential Random Network Models</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exponential-random-graph-models" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Exponential random graph models</h1>
+<p>The first model of interest to this thesis is the exponential random graph model (ERGM), introduced by <span class="citation">S. Wasserman &amp; Pattison (<a href="#ref-Wasserman1996">1996</a>)</span>. Broadly, given a network, this model allows us to specify structural features that are of interest and test in a principled way if there are more of those kinds of features present than would be expected if the network were formed by chance. This allows the researcher to draw conclusions about the latent process that generated the network.</p>
+This model can be expressed by the equation
+<span class="math display" id="eq:ergm">\[\begin{equation}
+  P(Y = y | \theta) = \frac{e^{\theta \cdot g(y)}}{C(\theta, \mathcal{Y})}
+  \tag{2.1},
+\end{equation}\]</span>
+<p>where <span class="math inline">\(g(y)\)</span> is a vector of statistics that depend on the network <span class="math inline">\(y\)</span> and <span class="math inline">\(\theta\)</span> is a vector of parameters. The function <span class="math inline">\(C(\theta, \mathcal{Y})\)</span> is a normalizing constant. We may easily extend the model to include nodal covariates (like demographic information) by introducing the fixed <span class="math inline">\(n \times p\)</span> matrix <span class="math inline">\(x\)</span> which is used to calculate some of the components of <span class="math inline">\(g\)</span>.</p>
+Note that the constant in the denominator depends both on the support of the random variable <span class="math inline">\(Y\)</span>, which is fixed and—in principle—known, and the unknown parameter <span class="math inline">\(\theta\)</span>. In general, this constant will have the form
+<span class="math display" id="eq:constant">\[\begin{equation} C(\theta, \mathcal{Y}) = \sum_{y \in \mathcal{Y}} e^{\theta
+\cdot g(y)}, \tag{2.2} \end{equation}\]</span>
+<p>which is impossible to compute in all but the most trivial cases, as the sum is over all possible networks. For the simplest undirected binary network with <span class="math inline">\(n\)</span> nodes, we have <span class="math inline">\(\left| \mathcal{Y} \right| = 2^{n(n-1)/2},\)</span> so for 10 nodes, the constant <span class="math inline">\(C\)</span> will be a sum of <span class="math inline">\(2^{45}\)</span> terms. As each term requires a non-trivial calculation, we are unable to calculate the value of <span class="math inline">\(C\)</span> directly for a network of any reasonable size.</p>
+With the model in place, we can begin to estimate the parameter <span class="math inline">\(\theta\)</span> via maximum likelihood estimation. To do that, we define the likelihood function, which takes the parameter space into the reals. Our goal is to find the value of <span class="math inline">\(\theta\)</span> that maximizes this function given the observed data. We call this <span class="math inline">\(\theta\)</span> the maximum likelihood estimator, or MLE. Intuitively, we are looking for the value of <span class="math inline">\(\theta\)</span> that makes the network we have observed most likely according to our model. In our case this function is
+<span class="math display" id="eq:lik">\[\begin{equation} L(\theta |
+y) = \frac{e^{\theta \cdot g(y)}}{C(\theta, \mathcal{Y})}. \tag{2.3} 
+\end{equation}\]</span>
+<p>Note that <span class="math inline">\(C\)</span> also varies with <span class="math inline">\(\theta\)</span>.</p>
+<p>The fact that this term varies with <span class="math inline">\(\theta\)</span> means that a naive optimization algorithm will be prohibitively slow. Exploring the parameter space almost always involves evaluating the function at many different points. For example, the common gradient descent algorithm involves evaluating the function many times in the neighborhood of a point to approximate the gradient. This then allows the algorithm to choose a new point where the function is larger. This process then repeats. Even when given relatively simple functions, this algorithm can require hundreds of function calls. In our case, that is not feasible, as we cannot even evaluate our function once.</p>
+<div id="finding-parameter-estimates" class="section level2">
+<h2><span class="header-section-number">2.1</span> Finding parameter estimates</h2>
+The intractable normalizing constant <a href="2-exponential-random-graph-models.html#eq:constant">(2.2)</a> makes fitting this model directly extremely difficult. With no general analytic method to maximize the likelihood, we must turn to numerical approximations. However, these algorithms involve evaluating <span class="math inline">\(L(\theta)\)</span> at many different points. When <span class="math inline">\(\theta\)</span> varies the value of <span class="math inline">\(C\)</span> also changes, so each function evaluation must recompute this enormous sum. This makes standard numerical approaches useless for the problem at hand. Despite this there are several approaches that make use of a variety of approximations to (we hope) find reasonable parameter estimates. Here we will present both frequentist and Bayesian methods for estimating <span class="math inline">\(\theta\)</span>. To begin, we introduce another piece of notation. 
+<div class="definition">
+<span id="def:change-stat" class="definition"><strong>Definition 2.1 </strong></span>The change statistic is the vector
+<span class="math display" id="eq:changestat">\[\begin{equation}
+\delta_{g}(y)_{ij} = g(y^{+}_{ij}) - g(y^{-}_{ij}),
+\tag{2.4}
+\end{equation}\]</span>
+where <span class="math inline">\(g\)</span> is the vector of statistics, as before, and <span class="math inline">\(y^{+}_{ij}\)</span> and <span class="math inline">\(y^{-}_{ij}\)</span> are the observed network <span class="math inline">\(y\)</span> with the edge from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> taken to be present and absent, respectively.
+</div>
+ Now, we are able to show that, in the case of an unweighted graph <span class="math display">\[
+\operatorname{logit} \left( P (Y_{ij} = 1 | Y^{c}_{ij} = y^{c}_{ij} ) \right) = \theta \cdot \delta_{g}(y)_{ij},
+\]</span> where <span class="math inline">\(Y^{c}_{ij}\)</span> is the random variable without considering the tie from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> and the function <span class="math display">\[
+\operatorname{logit}(x) = \log \left(\frac{x}{1-x}\right).
+\]</span> This follows from noting that
+<span class="math display">\[\begin{align*}
+\operatorname{logit} \left[ P(Y_{ij} = 1 | Y^{c}_{ij} = y^{c}_{ij}) \right] &amp;= \operatorname{log} \left[ \frac{P(Y_{ij} = 1 | Y^{c}_{ij} = y^{c}_{ij})}{1 - P (Y_{ij} = 1 | Y^{c}_{ij} = y^{c}_{ij})} \right] \\
+  &amp;= \operatorname{log} \left[ \frac{P (Y_{ij} = 1 | Y^{c}_{ij} = y^{c}_{ij})}{P (Y_{ij} = 0 | Y^{c}_{ij} = y^{c}_{ij})} \right],
+\end{align*}\]</span>
+as the complement of the set of graphs where <span class="math inline">\(Y_{ij} = 1\)</span> is the set of graphs where <span class="math inline">\(Y_{ij} = 1\)</span>. Now,
+<span class="math display">\[\begin{align*}
+\operatorname{log} \left[ \frac{P (Y_{ij} = 1 | Y^{c}_{ij} = y^{c}_{ij})}{P (Y_{ij} = 0 | Y^{c}_{ij} = y^{c}_{ij})} \right]  &amp;=\operatorname{log}[P (Y_{ij} = 1 | Y^{c}_{ij} = y^{c}_{ij})] - \operatorname{log}[P (Y_{ij} = 0 | Y^{c}_{ij} = y^{c}_{ij})] \\
+  &amp;= \operatorname{log}\left[e^{\theta \cdot g(y^{+}_{ij})}\right] - \operatorname{log}\left[e^{\theta \cdot g(y^{-}_{ij})}\right] \\
+  &amp;= \theta \cdot \left( g(y_{ij}^{+}) - g(y_{ij}^{-}) \right) \\
+  &amp;= \theta \cdot \delta_{g}(y)_{ij},
+\end{align*}\]</span>
+<p>as desired.</p>
+<p>Thus, each component of <span class="math inline">\(\theta\)</span> represents the increase in the log-odds of a tie from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> being present in the network that is associated with a change in <span class="math inline">\(y^{c}_{ij}\)</span> that increases the corresponding component of <span class="math inline">\(g(y)\)</span> by one unit. An example of this kind of interpretation is presented in Section <a href="2-exponential-random-graph-models.html#examples">2.2</a>.</p>
+<div id="frequentist-methods" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Frequentist methods</h3>
+The change statistic allows us to define the pseudolikelihood, introduced by <span class="citation">Strauss &amp; Ikeda (<a href="#ref-Strauss1990">1990</a>)</span>. The pseudolikelihood function represents the model where the probability that a tie from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> exists is independent of all the other ties. Even when this assumption is known to be false, the hope is that the maximum pseudolikelihood estimator will be a good approximation of the more general MLE. This yields the likelihood function
+<span class="math display">\[\begin{equation*} 
+\operatorname{PL}(\theta) = \prod_{i \neq j}P(Y_{ij} = y_{ij} | \theta). 
+\end{equation*}\]</span>
+<p>Taking the logit transforms this into a standard logistic regression where the response variable is the vector containing a 1 or a 0 depending on the existence of the tie between nodes <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> and the explanatory variables are the vectors of change statistics. This can then easily be fit using widely available generalized linear modeling tools. The estimator returned by this logistic regression is called the maximum psuedolikelihood estimator (MPLE).</p>
+<p>However, this method exhibits a few problems. In many cases, as already discussed, the assumption of dyadic independence is not justifiable, so the coefficient estimates cannot be expected to be accurate in general. The class of models called dyadic independence models are those in which the form of <span class="math inline">\(g\)</span> makes the likelihood exactly equal to the psuedolikelihood, and so we can fit them exactly using this method. When the dyadic independence assumption does not hold, we are no longer maximizing the likelihood associated with our model, so there is no reason to expect that we have the properties that make maximum likelihood estimators so nice. Specifically, there is no reason to believe that the parameter estimates actually asymptotically approach the true values or that the estimates are approximately normally distributed with the reported standard errors. An example of the trouble with standard errors will be seen in Section <a href="2-exponential-random-graph-models.html#examples">2.2</a>.</p>
+It is clear that a better method for computing the maximum likelihood estimator is highly desirable. This brings us to the Markov chain Monte Carlo MLE (MCMC-MLE) algorithm developed by <span class="citation">Geyer &amp; Thompson (<a href="#ref-Geyer1992">1992</a>)</span>. They introduce a method with applications to intractable distributions beyond ERGMs, but we will remain within that specific context. The crux of the algorithm lies in choosing a fixed value <span class="math inline">\(\theta_0\)</span> (typically the MPLE) that we hope is close to the true value of <span class="math inline">\(\theta\)</span> and then maximizing the likelihood ratio
+<span class="math display" id="eq:loglik-ratio">\[\begin{equation}
+\log \left[\frac{L(\theta)}{L(\theta_0)} \right].
+\tag{2.5}
+\end{equation}\]</span>
+We begin with the log likelihood of model <a href="2-exponential-random-graph-models.html#eq:ergm">(2.1)</a>
+<span class="math display" id="eq:loglik">\[\begin{equation}
+\ell(\theta) = \theta \cdot g(y) - \operatorname{log} \left( C(\theta, \mathcal{Y}) \right).
+\tag{2.6}
+\end{equation}\]</span>
+We can rewrite the ratio <a href="2-exponential-random-graph-models.html#eq:loglik-ratio">(2.5)</a> as
+<span class="math display" id="eq:log-diff">\[\begin{equation}
+\ell(\theta) - \ell(\theta_{0}) = (\theta - \theta_{0}) \cdot g(y) - \operatorname{log} \left( \frac{C(\theta, \mathcal{Y})}{C(\theta_{0}, \mathcal{Y})} \right).
+\tag{2.7}
+\end{equation}\]</span>
+Clearly, this is maximized at the same value of <span class="math inline">\(\theta\)</span> as the original likelihood, but now we can show that
+<span class="math display" id="eq:const-ratio">\[\begin{equation}
+\frac{C(\theta, \mathcal{Y})}{C(\theta_{0}, \mathcal{Y})} = \mathbb{E}_{\theta_0} \left[ e^{(\theta - \theta_0) \cdot g(y)} \right].
+\tag{2.8}
+\end{equation}\]</span>
+This follows from noting that
+<span class="math display">\[\begin{align*}
+  \frac{C(\theta, \mathcal{Y})}{C(\theta_{0}, \mathcal{Y})} &amp;= \frac{\sum_{z \in \mathcal{Y}} e^{\theta \cdot g(z)}}{\sum_{w \in \mathcal{Y}} e^{\theta_{0} \cdot g(w)}} \\
+  &amp;= \frac{\sum_{z \in \mathcal{Y}} e^{\theta \cdot g(z)} e^{(\theta_0 - \theta_0) \cdot g(z)}}{\sum_{w \in \mathcal{Y}} e^{\theta_{0} \cdot g(w)}} \\
+  &amp;= \sum_{z \in \mathcal{Y}} \left[ e^{\theta \cdot g(z)} e^{-\theta_0 \cdot g(z)} \left( \frac{e^{\theta_0 \cdot g(z)}}{\sum_{w \in \mathcal{Y}} e^{\theta_0 \cdot g(w)}} \right) \right].
+\end{align*}\]</span>
+<p>Recognizing the term in parentheses as <span class="math inline">\(P_{\theta_0} (Y = z)\)</span> makes it clear that we have <span class="math display">\[
+\frac{C(\theta, \mathcal{Y})}{C(\theta_{0}, \mathcal{Y})} = \sum_{z \in \mathcal{Y}} e^{(\theta - \theta_0) \cdot g(z)} P_{\theta_0} (Y = z) = \mathbb{E}_{\theta_0}\left[ e^{(\theta - \theta_{0}) \cdot g(Y)} \right],
+\]</span> as desired. Now we need only estimate this expectation using the weak law of large numbers. We do this by generating a Markov chain with stationary distribution <span class="math inline">\(P_{\theta_0}\)</span> and sampling sufficiently many times to get a good approximation of <a href="2-exponential-random-graph-models.html#eq:const-ratio">(2.8)</a>.</p>
+<p>Hence, the problem is reduced to constructing a Markov chain with <span class="math inline">\(P_{\theta_0}\)</span> as its stationary distribution. We use the algorithm developed by <span class="citation">Morris, Handcock, &amp; Hunter (<a href="#ref-Morris2008">2008</a>)</span>. It is essentially a Metropolis-Hastings algorithm where the proposal distribution chooses a pair of nodes, also called a dyad, then if they are connected, removes that tie, and if they are not connected, adds a tie between them. The obvious proposal distribution chooses two vertices at random, producing a simple random walk on <span class="math inline">\(\mathcal{Y}\)</span>. As an alternative to this naïve proposal distribution, <span class="citation">Morris et al. (<a href="#ref-Morris2008">2008</a>)</span> and <span class="citation">M. S. Handcock et al. (<a href="#ref-Handcock2016a">2016</a>)</span> have developed the tie-no-tie, or TNT, proposal distribution. In this method, the dyad is chosen by first selecting whether we will toggle a dyad with or without a tie in the original network. Then a pair of nodes from within the set of those which are either connected or not connected (depending on the previous step) is chosen at random. According to its inventors, this modification of the random walk on <span class="math inline">\(\mathcal{Y}\)</span> causes the chain to mix better, especially in sparse networks.</p>
+<p>This allows us to approximate samples from the probability distribution on <span class="math inline">\(\mathcal{Y}\)</span> implied by the parameter <span class="math inline">\(\theta_0\)</span>. Then we can estimate the expected value in <a href="2-exponential-random-graph-models.html#eq:const-ratio">(2.8)</a> and calculate what we hope is a good estimate for the actual MLE. However, this method is not without its caveats. It is shown in <span class="citation">Hunter, Handcock, Butts, Goodreau, &amp; Morris (<a href="#ref-Hunter2008">2008</a>)</span> that this algorithm can be sensitive to the initial parameter <span class="math inline">\(\theta_0\)</span> and a poor choice of this parameter can cause the approximation of the likelihood function <a href="2-exponential-random-graph-models.html#eq:log-diff">(2.7)</a> to never achieve a maximum on the parameter space. This happens when the function that we are optimizing, an approximation of the true log likelihood ratio, is bad enough that it becomes unbounded and so numeric optimization routines fail to find the maximum.</p>
+</div>
+<div id="bayesian-methods" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Bayesian methods</h3>
+<p>The parameter <span class="math inline">\(\theta\)</span> may also be estimated by Bayesian methods. However, this introduces the issue of sampling from a “doubly intractable” posterior distribution, where the problem of incalculable normalizing constants in the posterior is compounded by the functional form of our model <a href="2-exponential-random-graph-models.html#eq:ergm">(2.1)</a>. Markov chain Monte Carlo methods for these distributions have been studied by <span class="citation">Murray, Ghahramani, &amp; MacKay (<a href="#ref-Murray2012">2012</a>)</span>, where the easy to implement exchange algorithm was introduced, and <span class="citation">Caimo &amp; Friel (<a href="#ref-Caimo2011">2011</a>)</span>, where this algorithm was applied to ERGMs. The algorithm very cleverly avoids the intractable constants in <a href="2-exponential-random-graph-models.html#eq:ergm">(2.1)</a> by augmenting the posterior with an auxiliary variable from the same sample space as the parameter of interest. By doing this in just the right way, we are able to cancel all intractable constants from the acceptance probability <a href="2-exponential-random-graph-models.html#eq:naive-ratio">(2.10)</a>.</p>
+To be precise, let the observed network <span class="math inline">\(y\)</span> be taken from the distribution <span class="math inline">\(P_{\theta}\)</span> and let the prior for <span class="math inline">\(\theta\)</span> have distribution <span class="math inline">\(p(\theta)\)</span>. We must construct a Markov chain with stationary distribution equal to the posterior given by
+<span class="math display" id="eq:naive-post">\[\begin{equation}
+\pi(\theta | y) = \frac{P_{\theta}(Y = y) p(\theta)}{\int P_{\theta}(Y = y) p(\theta) \; \mathrm{d}\theta}.
+\tag{2.9}
+\end{equation}\]</span>
+In a standard Metropolis-Hastings implementation with proposal distribution =<span class="math inline">\(\theta^{\prime} \sim q( \cdot | \theta)\)</span> =500 we would have the acceptance probability
+<span class="math display" id="eq:naive-ratio">\[\begin{equation}
+a = \min \left[ 1, \frac{P_{\theta^{\prime}}(Y = y)p(\theta^{\prime})q(\theta^{\prime}|\theta)}{P_{\theta}(Y = y)p(\theta)q(\theta|\theta^{\prime})} \right],
+\tag{2.10}
+\end{equation}\]</span>
+where the likelihoods in the numerator and the denominator are evaluated at different values of <span class="math inline">\(\theta\)</span>. For the ERGM, the normalizing constants will not cancel. To get around this, we take <span class="math inline">\(w \sim P_{\theta^{\prime}}\)</span> and <span class="math inline">\(\theta^{\prime} \sim q(\cdot|\theta)\)</span>. Here, <span class="math inline">\(w\)</span> is another network that we sample from the ERGM distribution with parameter <span class="math inline">\(\theta^{\prime}\)</span>, while <span class="math inline">\(\theta^{\prime}\)</span> is drawn from an arbitrary proposal distribution that can depend on the current value of <span class="math inline">\(\theta\)</span>. Now the distribution we are sampling from is
+<span class="math display" id="eq:exch-bayes">\[\begin{equation}
+\pi(\theta, \theta^{\prime}, w |y) = \frac{P_{\theta}(Y = y) P_{\theta^{\prime}}(Y = w) q(\theta^{\prime} | \theta) p(\theta)}{\int P_{\theta}(Y = y) P_{\theta^{\prime}}(Y = w) q(\theta^{\prime} | \theta) p(\theta) \; \mathrm{d} \theta}.
+\tag{2.11}
+\end{equation}\]</span>
+The conditional distribution of <span class="math inline">\(\theta\)</span> is the posterior we are after. To begin, we draw <span class="math inline">\(\theta^{\prime}\)</span> from the (arbitrary) distribution <span class="math inline">\(q\)</span>, which can depend on <span class="math inline">\(\theta\)</span>. Then we draw <span class="math inline">\(w\)</span> from the distribution implied by <span class="math inline">\(\theta^{\prime}\)</span> (using already developed MCMC routines) and we propose an exchange of the generated data <span class="math inline">\(w\)</span> and the observed data <span class="math inline">\(y\)</span> between the parameters <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\theta^{\prime}\)</span> which is accepted with probability
+<span class="math display" id="eq:exchange-ratio">\[\begin{equation}
+a = \min \left[ 1, \frac{P_{\theta^{\prime}}(Y = y) P_{\theta}(Y=w)p(\theta^{\prime})q(\theta^{\prime}|\theta)}{P_{\theta}(Y = y)P_{\theta^{\prime}}(Y = w)p(\theta)q(\theta|\theta^{\prime})} \right].
+\tag{2.12}
+\end{equation}\]</span>
+<p>Now all the incalculable constants in <a href="2-exponential-random-graph-models.html#eq:exchange-ratio">(2.12)</a> cancel, and we can approximate the posterior distribution as desired.</p>
+<p>It was also demonstrated by <span class="citation">Caimo &amp; Friel (<a href="#ref-Caimo2011">2011</a>)</span> that in most cases the use of adaptive direction sampling (ADS) allows for a more thorough exploration of the state space in fewer iterations. This improvement involves running multiple chains (say twice as many as the number of parameters in the model) that, at each iteration <span class="math inline">\(i\)</span>, are updated separately. When updating the <span class="math inline">\(j\)</span>-th chain, two other chains, <span class="math inline">\(k\)</span> and <span class="math inline">\(\ell\)</span> are randomly selected, then we propose <span class="math inline">\(\theta_{j}^{\prime} = \gamma (\theta^{i}_{k} - \theta^{i}_{\ell}) + \epsilon\)</span> where <span class="math inline">\(\gamma\)</span> is a fixed tuning parameter and <span class="math inline">\(\epsilon\)</span> is a small random quantity, both chosen to achieve a higher level of mixing than is usually seen when running a single chain in isolation. This improves the overall mixing of the separate chains and allows the process to thoroughly explore the sample space in fewer iterations. This is the default method in the <code>Bergm</code> package.</p>
+</div>
+</div>
+<div id="examples" class="section level2">
+<h2><span class="header-section-number">2.2</span> Examples</h2>
+<div class="figure" style="text-align: center"><span id="fig:flo-plot"></span>
+<img src="thesis_files/figure-html/flo-plot-1.png" alt="A plot of the Florentine marriage network where node size indicates wealth in thousands of lira." width="672" />
+<p class="caption">
+Figure 2.1: A plot of the Florentine marriage network where node size indicates wealth in thousands of lira.
+</p>
+</div>
+For illustrative purposes, we will use the Florentine wedding data included in the R <code>ergm</code> package by <span class="citation">M. S. Handcock et al. (<a href="#ref-Handcock2016a">2016</a>)</span>, which we also use to fit MPLE and MCMC-MLE models. We will use the <code>Bergm</code> package by <span class="citation">Caimo &amp; Friel (<a href="#ref-Caimo2014">2014</a>)</span> to fit the Bayesian models. These data consist of an undirected network of marriages between Florentine families during the Renaissance, along with several nodal covariates, including the family wealth in thousands of lira in the year 1427. This network is drawn in Figure <a href="2-exponential-random-graph-models.html#fig:flo-plot">2.1</a>. We will fit the ERGM with network statistics
+<span class="math display" id="eq:flo-model">\[\begin{equation}
+g(y) = \left( \sum_{i &lt; j} y_{ij}, \sum_{i &lt; j &lt; k} y_{ij} y_{jk} y_{ki}, \sum_{i &lt; j} y_{ij} \left| x_{i} - x_{j} \right| \right),
+\tag{2.13}
+\end{equation}\]</span>
+where <span class="math inline">\(y\)</span> is the network and <span class="math inline">\(x\)</span> is the corresponding vector of wealth measurements. Simply put, this creates a term for the number of edges, the number of triangles, and the difference in wealth between connected nodes in the network. The edge term acts as a sort of intercept in the model by measuring the overall propensity of actors to form ties, the triangle term measures the propensity of actors in the graph to form triangles, and the wealth difference term accounts for how difference in family fortune affects the probability of tie formation. Tables <a href="2-exponential-random-graph-models.html#tab:flo-models-mple">2.1</a>, <a href="2-exponential-random-graph-models.html#tab:flo-models-mcmc">2.2</a>, and <a href="2-exponential-random-graph-models.html#tab:flo-models-bayes">2.3</a> show the coefficient estimates and standard errors. Bayesian estimation is done using a very flat multivariate normal prior centered on the origin with variance-covariance matrix
+<span class="math display">\[\begin{equation*}
+\Sigma = 
+\begin{bmatrix}
+100 &amp; 0 &amp; 0 \\
+0 &amp; 100 &amp; 0 \\
+0 &amp; 0 &amp; 100 \\
+\end{bmatrix}.
+\end{equation*}\]</span>
+<p>Figure <a href="2-exponential-random-graph-models.html#fig:flo-post">2.2</a> shows posterior density estimates for the Bayesian model.</p>
+<table>
+<caption><span id="tab:flo-models-mple">Table 2.1: </span>The results of fitting model  using MPLE.</caption>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">std.error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">edges</td>
+<td align="right">-2.36</td>
+<td align="right">0.44</td>
+</tr>
+<tr class="even">
+<td align="left">triangle</td>
+<td align="right">0.16</td>
+<td align="right">0.44</td>
+</tr>
+<tr class="odd">
+<td align="left">absdiff.wealth</td>
+<td align="right">0.02</td>
+<td align="right">0.01</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:flo-models-mcmc">Table 2.2: </span>The results of fitting model  using MCMC-MLE.</caption>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">std.error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">edges</td>
+<td align="right">-2.29</td>
+<td align="right">0.45</td>
+</tr>
+<tr class="even">
+<td align="left">triangle</td>
+<td align="right">-0.04</td>
+<td align="right">0.60</td>
+</tr>
+<tr class="odd">
+<td align="left">absdiff.wealth</td>
+<td align="right">0.02</td>
+<td align="right">0.01</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:flo-models-bayes">Table 2.3: </span>The results of fitting model  using Bayesian methods.</caption>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">posterior mean</th>
+<th align="right">posterior s.d.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">edges</td>
+<td align="right">-2.25</td>
+<td align="right">0.45</td>
+</tr>
+<tr class="even">
+<td align="left">triangle</td>
+<td align="right">-0.33</td>
+<td align="right">0.59</td>
+</tr>
+<tr class="odd">
+<td align="left">absdiff.wealth</td>
+<td align="right">0.02</td>
+<td align="right">0.01</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span id="fig:flo-post"></span>
+<img src="thesis_files/figure-html/flo-post-1.png" alt="Posterior density plots of the Florentine marriage model parameter estimates." width="672" />
+<p class="caption">
+Figure 2.2: Posterior density plots of the Florentine marriage model parameter estimates.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:flo-gof"></span>
+<img src="thesis_files/figure-html/flo-gof-1.png" alt="Goodness-of-fit assessment for the Bayesian model fit to the Florentine marriage data. These plots compare simulated distributions of graph statistics that were not modeled to the observed values (in red)." width="672" />
+<p class="caption">
+Figure 2.3: Goodness-of-fit assessment for the Bayesian model fit to the Florentine marriage data. These plots compare simulated distributions of graph statistics that were not modeled to the observed values (in red).
+</p>
+</div>
+<p>We can see that all of these methods produce similar outcomes, with a clearly nonzero edge term, which makes sense as this is akin to an intercept term in a standard linear model, and a small but significant term corresponding to the difference in wealth. Notice that the standard error of the triangle term (which creates dependence between dyads) is much larger when the model is fit using MCMC-MLE. This supports the notion that standard errors reported my MPLE are unreliable in dyadic dependence models, as was discussed in Section <a href="2-exponential-random-graph-models.html#frequentist-methods">2.1.1</a>. Interpreting these coefficients allows us to infer that a difference in wealth of 1 unit (in this case 1000 lira), changes the log-odds of forming a tie (according to the MCMC-MLE model) by a factor of <span class="math inline">\(\theta_3 \approx\)</span> -0.04. The <code>ergm</code> and <code>Bergm</code> packages also provide tools for assessing the goodness-of-fit of exponential random graph models. These tools simulate many networks from the distribution implied by the model with the parameter estimate and then compare the distributions of several network statistics that <em>were not</em> modeled to the observed network. These statistics are by default minimum geodesic distance, edgewise shared partners, and degree distribution. Figure <a href="2-exponential-random-graph-models.html#fig:flo-gof">2.3</a> shows plots of these comparisons for the Bayesian model. As we can see, our model matches the simulated distributions fairly well.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Wasserman1996">
+<p>Wasserman, S., &amp; Pattison, P. (1996). Logit models and logistic regressions for social networks: I. an introduction to markov graphs and p*. <em>Psychometrika</em>, <em>61</em>(3), 401–425.</p>
+</div>
+<div id="ref-Strauss1990">
+<p>Strauss, D., &amp; Ikeda, M. (1990). Pseudolikelihood estimation for social networks. <em>Journal of the American Statistical Association</em>, <em>85</em>(409), 204–212. Retrieved from <a href="http://www.jstor.org/stable/2289546" class="uri">http://www.jstor.org/stable/2289546</a></p>
+</div>
+<div id="ref-Geyer1992">
+<p>Geyer, Charles J., &amp; Thompson, E. A. (1992). Constrained monte carlo maximum likelihood for dependent data. <em>Journal of the Royal Statistical Society. Series B (Methodological)</em>, <em>54</em>(3), 657–699. Retrieved from <a href="http://www.jstor.org/stable/2345852" class="uri">http://www.jstor.org/stable/2345852</a></p>
+</div>
+<div id="ref-Morris2008">
+<p>Morris, M., Handcock, M. S., &amp; Hunter, D. R. (2008). Specification of exponential-family random graph models: Terms and computational aspects. <em>Journal of Statistical Software</em>, <em>24</em>(4).</p>
+</div>
+<div id="ref-Handcock2016a">
+<p>Handcock, M. S., Hunter, D. R., Butts, C. T., Goodreau, S. M., Krivitsky, P. N., &amp; Morris, M. (2016). <em>ergm: Fit, simulate and diagnose exponential-family models for networks</em>. The Statnet Project (<a href="http://www.statnet.org" class="uri">http://www.statnet.org</a>). Retrieved from <a href="http://CRAN.R-project.org/package=ergm" class="uri">http://CRAN.R-project.org/package=ergm</a></p>
+</div>
+<div id="ref-Hunter2008">
+<p>Hunter, D. R., Handcock, M. S., Butts, C. T., Goodreau, S. M., &amp; Morris, M. (2008). ergm: A package to fit, simulate and diagnose exponential-family models for networks. <em>Journal of Statistical Software</em>, <em>24</em>(3).</p>
+</div>
+<div id="ref-Murray2012">
+<p>Murray, I., Ghahramani, Z., &amp; MacKay, D. (2012). MCMC for doubly-intractable distributions. <em>ArXiv Preprint ArXiv:1206.6848</em>.</p>
+</div>
+<div id="ref-Caimo2011">
+<p>Caimo, A., &amp; Friel, N. (2011). Bayesian inference for exponential random graph models. <em>Social Networks</em>, <em>33</em>(1), 41–55. <a href="http://doi.org/10.1016/j.socnet.2010.09.004" class="uri">http://doi.org/10.1016/j.socnet.2010.09.004</a></p>
+</div>
+<div id="ref-Caimo2014">
+<p>Caimo, A., &amp; Friel, N. (2014). Bergm: Bayesian exponential random graphs in R. <em>Journal of Statistical Software</em>, <em>61</em>(2). Retrieved from <a href="http://www.jstatsoft.org/v61/i02/" class="uri">http://www.jstatsoft.org/v61/i02/</a></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-locally-dependent-exponential-random-network-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": "thesis.pdf",
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

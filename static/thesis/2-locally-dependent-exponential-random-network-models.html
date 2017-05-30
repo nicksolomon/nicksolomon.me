@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Local Dependence in Exponential Random Network Models</title>
+  <meta name="description" content="Local Dependence in Exponential Random Network Models">
+  <meta name="generator" content="bookdown 0.3.18 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Local Dependence in Exponential Random Network Models" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Local Dependence in Exponential Random Network Models" />
+  
+  
+  
+
+<meta name="author" content="Nicholas Solomon">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="3-discussion-and-examples.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-graphs"><i class="fa fa-check"></i><b>1.1</b> Random graphs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#network-modeling"><i class="fa fa-check"></i><b>1.2</b> Network modeling</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#finding-parameter-estimates"><i class="fa fa-check"></i><b>1.3</b> Finding parameter estimates</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#frequentist-methods"><i class="fa fa-check"></i><b>1.3.1</b> Frequentist methods</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#bayesian-methods"><i class="fa fa-check"></i><b>1.3.2</b> Bayesian methods</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#examples"><i class="fa fa-check"></i><b>1.4</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-locally-dependent-exponential-random-network-models.html"><a href="2-locally-dependent-exponential-random-network-models.html"><i class="fa fa-check"></i><b>2</b> Locally dependent exponential random network models</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-locally-dependent-exponential-random-network-models.html"><a href="2-locally-dependent-exponential-random-network-models.html#definitions-and-notation"><i class="fa fa-check"></i><b>2.1</b> Definitions and notation</a></li>
+<li class="chapter" data-level="2.2" data-path="2-locally-dependent-exponential-random-network-models.html"><a href="2-locally-dependent-exponential-random-network-models.html#preliminary-theorems"><i class="fa fa-check"></i><b>2.2</b> Preliminary theorems</a></li>
+<li class="chapter" data-level="2.3" data-path="2-locally-dependent-exponential-random-network-models.html"><a href="2-locally-dependent-exponential-random-network-models.html#consistency-under-sampling"><i class="fa fa-check"></i><b>2.3</b> Consistency under sampling</a></li>
+<li class="chapter" data-level="2.4" data-path="2-locally-dependent-exponential-random-network-models.html"><a href="2-locally-dependent-exponential-random-network-models.html#asymptotic-normality-of-statistics"><i class="fa fa-check"></i><b>2.4</b> Asymptotic normality of statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-discussion-and-examples.html"><a href="3-discussion-and-examples.html"><i class="fa fa-check"></i><b>3</b> Discussion and examples</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-discussion-and-examples.html"><a href="3-discussion-and-examples.html#examples-of-convergence"><i class="fa fa-check"></i><b>3.1</b> Examples of convergence</a></li>
+<li class="chapter" data-level="3.2" data-path="3-discussion-and-examples.html"><a href="3-discussion-and-examples.html#standard-error-estimation"><i class="fa fa-check"></i><b>3.2</b> Standard error estimation</a></li>
+<li class="chapter" data-level="3.3" data-path="3-discussion-and-examples.html"><a href="3-discussion-and-examples.html#discussion-of-future-work"><i class="fa fa-check"></i><b>3.3</b> Discussion of future work</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-code.html"><a href="A-code.html"><i class="fa fa-check"></i><b>A</b> Code</a><ul>
+<li class="chapter" data-level="A.1" data-path="A-code.html"><a href="A-code.html#network-simulation-code"><i class="fa fa-check"></i><b>A.1</b> Network simulation code</a></li>
+<li class="chapter" data-level="A.2" data-path="A-code.html"><a href="A-code.html#jackknife-standard-error-code"><i class="fa fa-check"></i><b>A.2</b> Jackknife standard error code</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Local Dependence in Exponential Random Network Models</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="locally-dependent-exponential-random-network-models" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Locally dependent exponential random network models</h1>
+<span class="math inline">\(\newcommand{\var}{\operatorname{Var}} \newcommand{\cov}{\operatorname{Cov}}\)</span>
+<div class="figure" style="text-align: center"><span id="fig:rn-example"></span>
+<img src="figure/png/ld_net.png" alt="A locally dependent random network with neighborhoods \(A_1, A_2, \dots, A_K\) and two binary node attributes, represented as gray or black and circle or diamond." width="540" />
+<p class="caption">
+Figure 2.1: A locally dependent random network with neighborhoods <span class="math inline">\(A_1, A_2, \dots, A_K\)</span> and two binary node attributes, represented as gray or black and circle or diamond.
+</p>
+</div>
+<p>To begin, we define a random network, developed by <span class="citation">Fellows &amp; Handcock (<a href="#ref-Fellows2012">2012</a>)</span>. By way of motivation, note that in the ERGM the nodal variates are fixed and are included in the model as explanatory variables in making inferences about network structure. Furthermore, there is a class of models that we do not discuss here that consider the network as a fixed explanatory variable in modeling (random) nodal attributes. It is not difficult to come up with situations where a researcher would like to <em>jointly</em> model both the network and the node attributes. Thus we define a class of networks in which both the network structure and the attributes of the individual nodes are modeled as random quantities.</p>
+
+<div class="definition">
+<span id="def:RN" class="definition"><strong>Definition 2.1  (Random network)  </strong></span>Let <span class="math inline">\(\mathcal{N}\)</span> be a countable collection of nodes (which we take to be a subset of <span class="math inline">\(\mathbb{N}\)</span>). Let <span class="math inline">\(Y\)</span> be the random graph on the nodes <span class="math inline">\(\mathcal{N}\)</span> with support <span class="math inline">\(\mathcal{Y}\)</span>. Then for each element <span class="math inline">\(n \in \mathcal{N}\)</span>, let there be a corresponding random vector of node attributes <span class="math inline">\(X_n \in \mathbb{R}^q\)</span> and collect them into the <span class="math inline">\(n \times q\)</span> random matrix <span class="math inline">\(X\)</span> with support <span class="math inline">\(\mathcal{X}\)</span>. The  is the random variable <span class="math inline">\(Z = (Y, X)\)</span> with support <span class="math inline">\(\mathcal{Z} = \mathcal{Y} \times \mathcal{X}\)</span>.
+</div>
+<p></p>
+Now we wish to model these objects, so we follow the ERGM and turn to the exponential family <span class="citation">(Fellows &amp; Handcock, <a href="#ref-Fellows2012">2012</a>)</span>. We write
+<span class="math display" id="eq:ERNM">\[\begin{equation}
+  P(Y = y, X = x| \eta) \propto e^{\eta \cdot g(y, x)}.
+  \tag{2.1}
+\end{equation}\]</span>
+This looks very similar to the ERGM, but note the explicit dependence on the quantity <span class="math inline">\(x\)</span>. More concretely, we can include terms that depend <em>only</em> on <span class="math inline">\(x\)</span>, which would have no place in an ERGM. We can further express the difference of the two models by rewriting the left hand side of  as
+<span class="math display">\[\begin{equation*}
+  P(X = x, Y = y | \eta) = P(Y = y|X = x, \eta)P(X=x|\eta),
+\end{equation*}\]</span>
+where the first term on the right hand side is the ERGM and the second term is
+<span class="math display">\[\begin{equation*}
+  P(X = x|\eta) = \frac{C(\mathcal{Z}, \eta, x)}{C(\mathcal{Z}, \eta)},
+\end{equation*}\]</span>
+where
+<span class="math display">\[\begin{equation*}
+  C(\mathcal{Z}, \eta, x) = \int_{\{(v, u) \in \mathcal{Z} : u = x\}} P(X = x | \eta).
+\end{equation*}\]</span>
+<p>Roughly, this is the proportion of the total sample space <span class="math inline">\(\mathcal{Z}\)</span> that is possible with <span class="math inline">\(x\)</span> fixed. This is not, in general, equal to one, so the ERNM is not equal to the ERGM <span class="citation">(Fellows &amp; Handcock, <a href="#ref-Fellows2012">2012</a>)</span>.</p>
+<div id="definitions-and-notation" class="section level2">
+<h2><span class="header-section-number">2.1</span> Definitions and notation</h2>
+<p>We will consistently refer to a set of nodes, <span class="math inline">\(A_{k}\)</span>, as the <span class="math inline">\(k\)</span>-th neighborhood, with an uppercase <span class="math inline">\(K\)</span> representing the total number of neighborhoods and a lowercase <span class="math inline">\(k\)</span> representing a specific neighborhood. The variable <span class="math inline">\(\mathcal{N}\)</span> will refer to the domain of a random network, usually the union of a collection of neighborhoods. Nodes within the network will be indexed by the variables <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, with <span class="math inline">\(Z_{ij} = (\{Y_{ij}, X_i, X_j\})\)</span>, where <span class="math inline">\(Y_{ij}\)</span> is referring to the edge between nodes <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, and <span class="math inline">\(X_{i}\)</span> and <span class="math inline">\(X_j\)</span> refer to the random vectors of node attributes. Abstracting this further, <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> will also refer to tuples of nodes, so we will write <span class="math inline">\(\vec{i} = (i_1, i_2, \dots, i_q) \in \mathcal{N} \times \mathcal{N} \times \dots \times \mathcal{N}\)</span>. The variables <span class="math inline">\(Z\)</span> and <span class="math inline">\(Y\)</span> will also often carry a subscript of <span class="math inline">\(W\)</span> or <span class="math inline">\(B\)</span> (for example <span class="math inline">\(Y_{Bij}\)</span>) which emphasizes that the edge from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> is within or between neighborhoods, respectively. Finally, for lack of a better notation, the indicator function <span class="math inline">\(\mathbb{I}_{B}(i,j)\)</span> (where <span class="math inline">\(B\)</span> is for between) is one if <span class="math inline">\(i \in A_{l}\)</span> and <span class="math inline">\(j \in A_{p}\)</span> where <span class="math inline">\(l \neq p\)</span>, and zero otherwise.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-1" class="definition"><strong>Definition 2.2  (Local dependence property)  </strong></span>Extending the definition in <span class="citation">Schweinberger &amp; Handcock (<a href="#ref-Schweinberger2015">2015</a>)</span>, a random network model satisfies  if there is a partition of the node set <span class="math inline">\(\mathcal{N}\)</span> into neighborhoods <span class="math inline">\(A_1, A_2, \dots, A_K\)</span> for <span class="math inline">\(K \geq 2\)</span> such that the network variables <span class="math inline">\(Z_{ij}\)</span> are dependent when <span class="math inline">\(i, j \in A_{\ell}\)</span> for some <span class="math inline">\(\ell\)</span> and independent otherwise. We also require that nodal attributes depend only on the attributes of nodes within the same neighborhood. Thus, the probability measure can be written as
+<span class="math display">\[\begin{equation}
+    P(Z \in \mathbf{Z}) = \prod_{k = 1}^{K}\left[ P_{kk}(Z_{kk} \in \mathbf{Z}_{kk}) \prod_{\ell = 1}^{k-1} P_{kl}(Z_{kl} \in \mathbf{Z}_{kl}, Z_{lk} \in \mathbf{Z}_{lk}) \right],
+  \end{equation}\]</span>
+where <span class="math inline">\(Z_{mn}\)</span> is the subnetwork consisting of the random graph ties from nodes in <span class="math inline">\(A_m\)</span> to those in <span class="math inline">\(A_n\)</span> and the appropriate node variables and <span class="math inline">\(\mathbf{Z}_{mn}\)</span> is a subset of the sample space of <span class="math inline">\(Z_{mn}\)</span>. Furthermore, the measures <span class="math inline">\(P_{kk}\)</span> can induce dependence between dyads while the measures <span class="math inline">\(P_{kl}\)</span> induce independence.
+</div>
+<p></p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-2" class="definition"><strong>Definition 2.3  (Sparsity)  </strong></span>Also from <span class="citation">Schweinberger &amp; Handcock (<a href="#ref-Schweinberger2015">2015</a>)</span>, we say a locally dependent random network is  if there is some <span class="math inline">\(\delta &gt; 0\)</span> and some <span class="math inline">\(C &gt; 0\)</span> such that
+<span class="math display">\[\begin{equation}
+    \mathbb{E}\left( \left| Y_{Bij} \right|^{p} \right) \leq Cn^{-\delta}, \qquad (p = 1, 2)
+  \end{equation}\]</span>
+where <span class="math inline">\(n = |\mathcal{N}|\)</span> and <span class="math inline">\(Y_{Bij}\)</span> signifies the tie between neighborhoods from node <span class="math inline">\(i \in A_{l}\)</span> to node <span class="math inline">\(j \in A_{m}\)</span> where <span class="math inline">\(l \neq m\)</span>.
+</div>
+<p></p>
+</div>
+<div id="preliminary-theorems" class="section level2">
+<h2><span class="header-section-number">2.2</span> Preliminary theorems</h2>
+<p>In proving our theorems, we will make use of several other central limit theorems, all of which can be found in <span class="citation">Billingsley (<a href="#ref-Billingsley1995">1995</a>)</span>. The first is the Lindeberg-Feller central limit theorem for triangular arrays. The second is Lyapounov’s condition, which gives a convenient way to show that the Lindeberg-Feller theorem holds. Finally, we make use of a central limit theorem for dependent random variables. For the sake of brevity, in this section we state each of these without proof.</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-3" class="theorem"><strong>Theorem 2.1  (Billingsley, 1995 Theorem 27.2)  </strong></span>For each <span class="math inline">\(n\)</span> take <span class="math inline">\(X_{n1}, \dots, X_{nr_n}\)</span>, independent with <span class="math inline">\(\mathbb{E}(X_{ns}) = 0\)</span> for all <span class="math inline">\(n\)</span> and <span class="math inline">\(s\)</span> (where no generality is lost in this assumption). Then we have <span class="math inline">\(\sigma^{2}_{ns} = \var(X_{ns}) = \mathbb{E}(X_{ns}^2)\)</span>. Next, set <span class="math inline">\(s^{2}_{s} = \sum_{s = 1}^{r_n} \sigma^{2}_{ns}\)</span>. Now set
+<span class="math display">\[\begin{equation*}
+S_{n} = X_{n1} + \dots + X_{nr_n}.
+\end{equation*}\]</span>
+If the ,
+<span class="math display">\[\begin{equation}
+\lim_{n \to \infty} \sum_{s = 1}^{r_n} \frac{1}{s^{2}_{n}} \int_{|X_{ns} \geq \epsilon s_n} X^{2}_{ns} = 0
+\end{equation}\]</span>
+holds for all <span class="math inline">\(\epsilon &gt; 0\)</span>, then <span class="math inline">\(S_n \xrightarrow{\mathrm{d}} N(0,1)\)</span>.
+</div>
+<p></p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-4" class="theorem"><strong>Theorem 2.2  (Billingsley, 1995 Theorem 27.3)  </strong></span>Let <span class="math inline">\(S_n\)</span> be as before. Then if ,
+<span class="math display" id="eq:lya">\[\begin{equation}
+\lim_{n \to \infty} \sum_{s = 1}^{r_n} \frac{1}{s_n^{2 + \delta}} \mathbb{E} \left( \left| X_{ns} \right|^{s + \delta} \right) = 0
+\tag{2.2}
+\end{equation}\]</span>
+holds for some <span class="math inline">\(\delta &gt; 0\)</span>, then the Lindeberg condition also holds. Therefore <span class="math inline">\(S_{n} \xrightarrow{\mathrm{d}} N(0,1)\)</span>.
+</div>
+<p></p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-5" class="theorem"><strong>Theorem 2.3  (Billingsley, 1995 Theorem 27.4)  </strong></span>Suppose that <span class="math inline">\(X_1, X_2, \dots\)</span> is stationary and <span class="math inline">\(\alpha\)</span>-mixing with <span class="math inline">\(\alpha_n = O(n^{-5})\)</span> and that <span class="math inline">\(\mathbb{E}(X_n) = 0\)</span> and <span class="math inline">\(\mathbb{E}(X_n^{12}) &lt; \infty\)</span>. Note that the condition on <span class="math inline">\(\alpha\)</span> is stronger than what we require. Our <span class="math inline">\(X_n\)</span> will be <span class="math inline">\(M\)</span>-dependent, meaning that each <span class="math inline">\(X_n\)</span> is independent of all <span class="math inline">\(X_m\)</span> where <span class="math inline">\(|n - m| &gt; M\)</span>. It is true that an <span class="math inline">\(M\)</span>-dependent sequence is <span class="math inline">\(\alpha\)</span>-mixing for constant <span class="math inline">\(\alpha\)</span>. Then, if <span class="math inline">\(S_n = X_1 + \dots X_n\)</span>, we have
+<span class="math display">\[\begin{equation}
+\frac{\var(S_n)}{n} \to \sigma^2.
+\end{equation}\]</span>
+Then, if <span class="math inline">\(\sigma &gt; 0\)</span>, we have <span class="math inline">\(S_n \xrightarrow{\mathrm{d}} N(0,1)\)</span>.
+</div>
+<p></p>
+<p>The final theorem is Slutsky’s theorem, a classic result of asymptotic theory in statistics.</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-6" class="theorem"><strong>Theorem 2.4  (Wasserman, 2004 Theorem 5.5)  </strong></span>Let <span class="math inline">\(X_n, X, Y_n\)</span> be random variables and let <span class="math inline">\(c\)</span> be a constant. Then, if <span class="math inline">\(X_n \xrightarrow[]{\mathrm{d}} X\)</span> and <span class="math inline">\(Y \xrightarrow[]{\mathrm{p}} c\)</span> we have <span class="math inline">\(X_n + Y_n \xrightarrow[]{\mathrm{d}} X + c\)</span> and <span class="math inline">\(X_n Y_n \xrightarrow[]{\mathrm{d}} cX\)</span>.
+</div>
+<p></p>
+</div>
+<div id="consistency-under-sampling" class="section level2">
+<h2><span class="header-section-number">2.3</span> Consistency under sampling</h2>
+<p>With these in place, we attempt to extend a result about locally dependent ERGMs proven by <span class="citation">Schweinberger &amp; Handcock (<a href="#ref-Schweinberger2015">2015</a>)</span> to locally dependent ERNMs. In short, this theorem states that the parameters estimated by modeling a small sample of a larger network can be generalized to the overall network. It was shown by <span class="citation">Shalizi &amp; Rinaldo (<a href="#ref-Shalizi2013">2013</a>)</span> that most useful formulations of ERGMs do not form projective exponential families in the sense that the distribution of a subgraph cannot be, in general, recovered by marginalizing the distribution of a larger graph with respect to the edge variables not included in the smaller graph. Hence, we are unable to generalize parameter estimates from the subnetwork to the total network.</p>
+<p>To show that locally dependent ERNMs do form a projective family, let <span class="math inline">\(\mathbb{A}\)</span> be a collection of sets <span class="math inline">\(\mathcal{A}\)</span>, where each <span class="math inline">\(\mathcal{A}\)</span> is a finite collection of neighborhoods. Also, allow the set <span class="math inline">\(\mathbb{A}\)</span> to be an ideal, so that if <span class="math inline">\(\mathcal{A} \in \mathbb{A}\)</span>, every subset of <span class="math inline">\(\mathcal{A}\)</span> is also in <span class="math inline">\(\mathbb{A}\)</span> and if <span class="math inline">\(\mathcal{B} \in \mathbb{A}\)</span>, then <span class="math inline">\(\mathcal{A} \cup \mathcal{B} \in \mathbb{A}\)</span>. If <span class="math inline">\(\mathcal{A} \subset \mathcal{B}\)</span>, think of passing from the set <span class="math inline">\(\mathcal{A}\)</span> to the set <span class="math inline">\(\mathcal{B}\)</span> as taking a larger sample of the (possibly infinite) set of neighborhoods in the larger network. Then let <span class="math inline">\(\{\mathcal{P}_{\mathcal{A}, \theta}\}_{\mathcal{A} \in \mathbb{A}}\)</span> be the collection of ERNMs with parameter <span class="math inline">\(\theta\)</span> indexed by the sets in <span class="math inline">\(\mathbb{A}\)</span>. For each <span class="math inline">\(\mathcal{A} \in \mathbb{A}\)</span>, let <span class="math inline">\(\mathcal{P}_{\mathcal{A}, \Theta} = \{P_{\mathcal{A}, \theta}\}_{\theta \in \Theta}\)</span> be the collection of ERNMs on the neighborhoods in <span class="math inline">\(\mathcal{A}\)</span> with parameter <span class="math inline">\(\theta \in \Theta\)</span> where <span class="math inline">\(\Theta \subset \mathbb{R}^{p}\)</span> is open. Assume that each distribution in <span class="math inline">\(\mathcal{P}_{\mathcal{A}, \Theta}\)</span> has the same support <span class="math inline">\(\mathcal{Z}_{\mathcal{A}}\)</span> and that <span class="math inline">\(\mathcal{A} \subset \mathcal{B}\)</span> if and only if <span class="math inline">\(\mathcal{Z}_{\mathcal{B}} = \mathcal{Z}_{\mathcal{A}} \times \mathcal{Z}_{\mathcal{B} \setminus \mathcal{A}}\)</span>. Then, the exponential family <span class="math inline">\(\{\mathcal{P}_{\mathcal{A}, \Theta}\}_{\mathcal{A} \in \mathbb{A}}\)</span> is projective in the sense of <span class="citation">Shalizi &amp; Rinaldo (<a href="#ref-Shalizi2013">2013</a> Definition 1)</span> precisely when Theorem <a href="2-locally-dependent-exponential-random-network-models.html#thm:consistency">2.6</a> holds.</p>
+<p>This follows from a specific case of the general definition given by <span class="citation">Shalizi &amp; Rinaldo (<a href="#ref-Shalizi2013">2013</a>)</span>. There, for every pair <span class="math inline">\(\mathcal{A}\)</span> and <span class="math inline">\(\mathcal{B}\)</span> with <span class="math inline">\(\mathcal{A} \subset \mathcal{B}\)</span>, they define the natural projection mapping <span class="math inline">\(\pi_{\mathcal{B} \to \mathcal{A}}: \mathcal{Z_B} \to \mathcal{Z_A}\)</span>. Informally, this mapping projects the set <span class="math inline">\(\mathcal{Z_B}\)</span> down to <span class="math inline">\(\mathcal{Z_A}\)</span> by simply removing the extra data. For example if <span class="math inline">\(\mathcal{B} = \{A_1, A_2\}\)</span> and <span class="math inline">\(\mathcal{A} = \{A_1\}\)</span> as in Figure <a href="2-locally-dependent-exponential-random-network-models.html#fig:rn-example">2.1</a>, then the mapping <span class="math inline">\(\pi_{\mathcal{B} \to \mathcal{A}}\)</span> is shown in Figure <a href="2-locally-dependent-exponential-random-network-models.html#fig:net-proj">2.2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:net-proj"></span>
+<img src="figure/png/net_projection.png" alt="The projection mapping from \(\mathcal{B} = \{A_1, A_2\}\) to \(\mathcal{A} = \{A_1\}\)." width="540" />
+<p class="caption">
+Figure 2.2: The projection mapping from <span class="math inline">\(\mathcal{B} = \{A_1, A_2\}\)</span> to <span class="math inline">\(\mathcal{A} = \{A_1\}\)</span>.
+</p>
+</div>
+<p>This is desirable because <span class="citation">Shalizi &amp; Rinaldo (<a href="#ref-Shalizi2013">2013</a>)</span> have demonstrated the following theorem.</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-7" class="theorem"><strong>Theorem 2.5  (Shalizi &amp; Rinaldo, 2013 Theorem 3)  </strong></span>If the exponential model family <span class="math inline">\(\{\mathcal{P}_{\mathcal{A} \Theta}\}_{\mathcal{A} \in \mathbb{A}}\)</span> is projective and the log of the normalizing constant can be written as
+<span class="math display">\[\begin{align}
+\begin{split}
+\log \left( C(\theta, \mathcal{Z}) \right) &amp;= \log \left( \int_{\mathcal{Z}} e^{\theta \cdot g(z)} \;\mathrm{d}z \right) \\
+                                          &amp;= r \left(\left| \mathcal{Z} \right| \right) a(\theta),
+\end{split}
+\end{align}\]</span>
+where <span class="math inline">\(r\)</span> is a positive, monotone increasing function of some positive measure on <span class="math inline">\(\mathcal{Z}\)</span> and <span class="math inline">\(a\)</span> is a differentiable function of <span class="math inline">\(\theta\)</span>, then the maximum likelihood estimator exists and is strongly consistent, meaning that the MLE, <span class="math inline">\(\hat{\theta} \xrightarrow[]{\text{a.s.}} \theta\)</span>, where <span class="math inline">\(\theta\)</span> is the unknown parameter being estimated.
+</div>
+<p></p>
+<p>This is trivially achieved by setting <span class="math inline">\(r = 1\)</span> for all values of <span class="math inline">\(\left| \mathcal{Z} \right|\)</span> and setting <span class="math inline">\(a(\theta) = \log(C(\theta, \mathcal{Z}))\)</span>. We have differentiability of <span class="math inline">\(a\)</span> with respect to <span class="math inline">\(\theta\)</span> by a result from multivariable calculus that follows from Fubini’s theorem. From a practical perspective, this means that a researcher using this model can assume that parameters estimated from samples of a large network are increasingly good approximations for the true parameter values as the sample size increases.</p>
+
+<div class="theorem">
+<span id="thm:consistency" class="theorem"><strong>Theorem 2.6 </strong></span> Let <span class="math inline">\(A_{1}, A_{2}, \dots\)</span> be a sequence of neighborhoods and define the sequence <span class="math inline">\(\{\mathcal{N}_{K}\} = \bigcup_{i = 1}^{K} A_{i}\)</span>. Then let <span class="math inline">\(Z_{1}, Z_{2}, \dots\)</span> be the sequence of locally dependent random networks on the <span class="math inline">\(\mathcal{N}_K\)</span>. For each <span class="math inline">\(Z_K\)</span>, there is the corresponding set of neighborhoods <span class="math inline">\(\mathcal{A}_K\)</span>. Let <span class="math inline">\(P_K\)</span> be a generic probability distribution from the family <span class="math inline">\(\{\mathcal{P}_{K \theta}\}_{\theta \in \Theta}\)</span>. Let the network
+<span class="math display">\[\begin{equation*}
+\pi_{\mathcal{A}_{K+1} \to \mathcal{A}_K}(Z_{K+1}) = Z_{K+1 \setminus K},
+\end{equation*}\]</span>
+with corresponding distirbution <span class="math inline">\(P_{K+1 \setminus K}\)</span>. Then
+<span class="math display">\[\begin{equation}
+    P_{K}(Z_{K} \in \mathbf{Z}_K) = P_{K+1}(Z_{K} \in \mathbf{Z}_K, Z_{K+1 \setminus K} \in \mathcal{Z}_{K+1 \setminus K}),
+  \end{equation}\]</span>
+my_dev where <span class="math inline">\(\mathcal{Z}_K\)</span> is the sample space of the distribution <span class="math inline">\(P_{K}\)</span> and <span class="math inline">\(\mathbf{Z}_K \subset \mathcal{Z}_K\)</span>. This is a specific case of the definition of projectibility for a general exponential family given by <span class="citation">Shalizi &amp; Rinaldo (<a href="#ref-Shalizi2013">2013</a>)</span>.
+</div>
+<p></p>
+
+<div class="proof">
+<span class="proof"><em>Proof. </em></span>  This follows from the definition of local dependence, in much the same way as the proof for ERGMs by <span class="citation">Schweinberger &amp; Handcock (<a href="#ref-Schweinberger2015">2015</a>)</span> does. We have
+<span class="math display">\[\begin{align*}
+    P_{K+1}(Z_{K} \in \mathbf{Z}_K, Z_{K+1 \setminus K} \in \mathcal{Z}_{K+1 \setminus K}) &amp;= P_{K+1}(Z_{K} \in \mathbf{Z}_K) P_{K+1 \setminus K}(Z_{K+1 \setminus K} \in \mathcal{Z}_{K+1 \setminus K}) \\
+    &amp;= P_{K}(Z_{K} \in \mathbf{Z}_K) (1) \\
+    &amp;= P_{K}(Z_{K} \in \mathbf{Z}_K),
+  \end{align*}\]</span>
+where the measure becomes <span class="math inline">\(P_k\)</span> from the product definition of a locally dependent random network. 
+</div>
+<p></p>
+</div>
+<div id="asymptotic-normality-of-statistics" class="section level2">
+<h2><span class="header-section-number">2.4</span> Asymptotic normality of statistics</h2>
+<p>In this section we will prove that certain classes of statistics of locally dependent random networks are asymptotically normally distributed as the number of neighborhoods tends to infinity. The statistics we consider can be classified into three types: first, statistics which depend only on the graph structure; second, statistics that depend on both the graph and the nodal variates; and third, statistics that depend only on the nodal variates. The first class of statistics has already been considered by <span class="citation">Schweinberger &amp; Handcock (<a href="#ref-Schweinberger2015">2015</a>)</span>, but we will reproduce the proof here, as the second proof is very similar. The third class of statistics becomes normal in the limit by a central limit theorem for <span class="math inline">\(M\)</span> dependent random variables in <span class="citation">Billingsley (<a href="#ref-Billingsley1995">1995</a>)</span>.</p>
+Before we begin to explicitly define each of these classes, we clarify the notation that will be used. A general statistic will be a function
+<span class="math display">\[\begin{equation*}
+S:\mathcal{N}^d \to \mathbb{R},
+\end{equation*}\]</span>
+where <span class="math inline">\(\mathcal{N}^d\)</span> is the <span class="math inline">\(d\)</span>-fold Cartesian product of the set of nodes, <span class="math inline">\(\mathcal{N}\)</span>, with itself:
+<span class="math display">\[\begin{equation*}
+\mathcal{N}^d = \underbrace{\mathcal{N} \times \dots \times \mathcal{N}}_{d \text{ times}}.
+\end{equation*}\]</span>
+<p>Additionally, the statistic will often carry a subscript <span class="math inline">\(K\)</span>, indicating that the statistic is of the random network with <span class="math inline">\(K\)</span> neighborhoods.</p>
+Formally, as explained in <span class="citation">Schweinberger &amp; Handcock (<a href="#ref-Schweinberger2015">2015</a>)</span>, the first class of statistics contains those that have the form
+<span class="math display">\[\begin{equation*}
+S_{K} = \sum_{i \in \mathcal{N}^d} S_{Ki},
+\end{equation*}\]</span>
+where
+<span class="math display">\[\begin{equation*}
+S_{Ki} = \prod_{l, p \in i} Y_{lp}, 
+\end{equation*}\]</span>
+<p>a product <span class="math inline">\(q\)</span> of edge variables that captures the interaction desired. We will also make use of the set <span class="math inline">\(A_k^d,\)</span> wich is a similar cartesian product. When we write <span class="math inline">\(i \in A_k^d\)</span>, we mean the every component of the <span class="math inline">\(d\)</span>-tuple <span class="math inline">\(i\)</span> is an element of <span class="math inline">\(A_k\)</span>. Furthermore, by a catachrestic abuse of notation, we will write <span class="math inline">\(l, p \in i\)</span> to mean that <span class="math inline">\(l\)</span> and <span class="math inline">\(p\)</span> are vertices contained in the <span class="math inline">\(d\)</span>-tuple <span class="math inline">\(i\)</span>. Now we are ready to prove the first case of the theorem.</p>
+
+<div class="theorem">
+<span id="thm:norm1" class="theorem"><strong>Theorem 2.7 </strong></span>Let <span class="math inline">\(A_1, A_2, \dots, A_K\)</span> be a sequence of neighborhoods of size at most <span class="math inline">\(M\)</span> and form the sequence of domains <span class="math inline">\(\mathcal{N}_{K} = \bigcup_{k = 1}^{K} A_{k}\)</span>. Then let <span class="math inline">\(Z_{1}, Z_{2}, \dots, Z_{K}\)</span> be the sequence of unweighted random networks on the <span class="math inline">\(\mathcal{N}_{K}\)</span>. Then, let the statistic <span class="math inline">\(S_{K}:\mathcal{N}_{K}^d \to \mathbb{R}\)</span> be given. Furthermore, assume the statisic depends only on the graph variables of the <span class="math inline">\(Z_{K}\)</span>. We also assume that the <span class="math inline">\(Z_{K}\)</span> satisfy the local dependence property and that they are <span class="math inline">\(\delta\)</span>-sparse, for some <span class="math inline">\(\delta &gt; d\)</span>. Finally, we require that <span class="math inline">\(\var(W_{K}) \to \infty\)</span>, where <span class="math inline">\(W_{K}\)</span> is defined in <a href="2-locally-dependent-exponential-random-network-models.html#eq:WK-def">(2.3)</a>. Then
+<span class="math display">\[\begin{equation}
+\frac{S_K - \mathbb{E}(S_K)}{\sqrt{Var(S_{K})}} \xrightarrow[K \to \infty]{\mathrm{d}} N(0, 1).
+\end{equation}\]</span>
+</div>
+<p></p>
+
+<div class="proof">
+<p><span class="proof"><em>Proof. </em></span>  As the networks <span class="math inline">\(Z_K\)</span> are unweighted, all edge variables <span class="math inline">\(Y_{ij}\in \{0, 1\}\)</span>. Let <span class="math inline">\(\mu_{ij} = \mathbb{E}(Y_{ij})\)</span>. Then define <span class="math inline">\(V_{ij} = Y_{ij} - \mu_{ij}\)</span>. Therefore, without loss of generality, we may work with <span class="math inline">\(V_{ij}\)</span>, which has the convenient property that <span class="math inline">\(\mathbb{E}(V_{ij}) = 0\)</span>. This means that we can similarly shift our statistics of interest, <span class="math inline">\(S_K\)</span>. Therefore, call <span class="math inline">\(S_K^{\ast} = S_{K} - \mathbb{E}(S_K)\)</span>, so that <span class="math inline">\(\mathbb{E}(S_K^{\ast}) = 0\)</span>.</p>
+Note that we can write
+<span class="math display">\[\begin{equation*}
+  S^{\ast}_{K} = W_{K} + B_{K},
+\end{equation*}\]</span>
+with
+<span class="math display" id="eq:WK-def">\[\begin{equation}
+  W_{K} = \sum_{k = 1}^{K} W_{K,k} = \sum_{k = 1}^{K}  \sum_{i \in \mathcal{N}_{K}^d} \mathbb{I}(i\in A_{k}) S^{\ast}_{Ki}
+  \tag{2.3}
+\end{equation}\]</span>
+and
+<span class="math display">\[\begin{equation}
+  B_{K} = \sum_{i \in \mathcal{N}_{K}^d} \mathbb{I}_{B}(i) S^{\ast}_{Ki},
+\end{equation}\]</span>
+<p>where the indicator functions restrict the sums to within the <span class="math inline">\(k\)</span>-th neighborhood and between neighborhoods of the graph, respectively. Specifically, <span class="math inline">\(\mathbb{I}_{B}(i) = 1\)</span> when the <span class="math inline">\(d\)</span>-tuple of nodes <span class="math inline">\(i\)</span> contains nodes from different neighborhoods. By splitting the statistic into the within and between neighborhood portions, we are able to make use of the independence relation between edges that connect neighborhoods. We also have <span class="math inline">\(\mathbb{E}(W_{K}) = 0\)</span> and <span class="math inline">\(\mathbb{E}(B_{K}) = 0\)</span>, as each quantity is a sum of random variables with mean zero.</p>
+<p>The idea of this proof is to gain control over the variances of <span class="math inline">\(B_{K}\)</span> and all the elements of the sequence <span class="math inline">\(W_{Kk}\)</span>. We can then show that <span class="math inline">\(B_{K}\)</span> is converging in probability to zero and that the triangular array <span class="math inline">\(W_{K}\)</span> satisifies Lyaponouv’s condition, and is thus asymptotically normal. Finally, Slutsky’s theorem allows us to extend the result to <span class="math inline">\(S^{\ast}_{K}\)</span>.</p>
+To bound the variance of <span class="math inline">\(B_{K}\)</span>, note that
+<span class="math display">\[\begin{equation*}
+\var(B_{K}) = \sum_{i \in \mathcal{N}_{K}^d} \sum_{j \in \mathcal{N}_{K}^d} \mathbb{I}_{B}(i) \mathbb{I}_{B}(j) \cov(S^{\ast}_{Ki}, S^{\ast}_{Kj}).
+\end{equation*}\]</span>
+Despite independence, some of these covariances may be nonzero if the two terms of the statistic both involve the same edge. For example, in Figure , a statistic that counted the number of edges between gray nodes plus the number of edges between diamond shaped nodes would have a nonzero covariance term because of the edge between the two nodes that are both gray and diamond shaped. To show that, in the limit, these covariances vanish, we need only concern ourselves with the nonzero terms in the sum. That is, only those terms where <span class="math inline">\(\mathbb{I}_{B}(i) \mathbb{I}_{B}(j) = 1\)</span>. This happens exactly when both <span class="math inline">\(S^{\ast}_{Ki}\)</span> and <span class="math inline">\(S^{\ast}_{Kj}\)</span> involve a between neighborhood edge variable. So, note that we have
+<span class="math display">\[\begin{align}
+  \begin{split}
+  \cov(S^{\ast}_{Ki}, S^{\ast}_{Kj}) &amp;= \mathbb{E}(S^{\ast}_{Ki} S^{\ast}_{Kj}) - \mathbb{E}(S^{\ast}_{Ki}) \mathbb{E}(S^{\ast}_{Kj}) \\
+  &amp;= \mathbb{E}(S^{\ast}_{Ki}S^{\ast}_{Kj}),
+\end{split}
+\end{align}\]</span>
+as the expectation of each term is zero. Next we take <span class="math inline">\(Y_{l_1 l_2}\)</span> to be one of the (possibly many) terms in this product such that <span class="math inline">\(\mathbb{I}_B = 1\)</span> and <span class="math inline">\(V_{l_1 l_2}\)</span> to be the recentered random variable corresponding to <span class="math inline">\(Y_{l_1 l_2}\)</span>. Then,
+<span class="math display">\[\begin{align*}
+\cov(S^{\ast}_{Ki}, S^{\ast}_{Kj}) &amp;= \mathbb{E}\left( \prod_{m,n \in i} V_{mn} \prod_{m,n \in j} V_{mn} \right) \\
+                     &amp;= \mathbb{E}\left( V_{l_1 l_2}^p \prod_{m,n \in (i \cup j) \setminus \{l_1, l_2\}} V_{mn} \right), &amp; (p = 1,2)
+\end{align*}\]</span>
+where we must consider the case where <span class="math inline">\(p = 1\)</span> to account for the covariance of <span class="math inline">\(S^{\ast}_{Ki}\)</span> and <span class="math inline">\(S^{\ast}_{Kj}\)</span> when <span class="math inline">\(i \neq j\)</span> and the case where <span class="math inline">\(p = 2\)</span> to account for the variance of <span class="math inline">\(S^{\ast}_{Ki}\)</span>, which is computed in the case where <span class="math inline">\(i = j\)</span>. So, if <span class="math inline">\(p = 1\)</span>, then
+<span class="math display">\[\begin{align*}
+\mathbb{E}\left( V_{l_1 l_2} \prod_{m,n \in (i \cup j) \setminus \{l_1, l_2\}} V_{mn} \right) &amp;= \mathbb{E}\left( V_{l_1 l_2}\right) \mathbb{E}\left( \prod_{m,n \in (i \cup j) \setminus \{l_1, l_2\}} V_{mn} \right) \\
+&amp;= 0,
+\end{align*}\]</span>
+by the local dependence property and the assumption that <span class="math inline">\(\mathbb{E}(V_{l_1 l_2}) = 0\)</span>. The local dependence property allows us to factor out the expectation of <span class="math inline">\(V_{l_1 l_2}\)</span>, as this edge is between neighborhoods, and therefore independent of every other edge in the graph. Now, if we have <span class="math inline">\(p = 2\)</span>, then, by sparsity and the fact that the product below is at most <span class="math inline">\(1\)</span>,
+<span class="math display">\[\begin{equation*}
+\mathbb{E}\left( V_{l_1 l_2}^2\right) \mathbb{E}\left( \prod_{m,n \in (i \cup j) \setminus \{l_1, l_2\}} V_{mn} \right) \leq DCn^{-\delta},
+\end{equation*}\]</span>
+where D is a constant that bounds the expectation above. There exists such a constant because each of the V_{mn} are bounded by definiton, so a product of them is bounded. So as <span class="math inline">\(K\)</span> grows large, the between neighborhod covariances all become asymptotically negligible. Therefore, we can conclude that
+<span class="math display">\[\begin{equation}
+\var(B_{K}) = \sum_{i \in \mathcal{N}_{K}^d} \sum_{j \in \mathcal{N}_{K}^d} \mathbb{I}_{B}(i) \mathbb{I}_{B}(j) \cov(S^{\ast}_{Ki}, S^{\ast}_{Kj}) \leq DCn^{2d(-\delta)}.
+\end{equation}\]</span>
+So we have
+<span class="math display">\[\begin{equation}
+\var{B_{K}} \to 0.
+\end{equation}\]</span>
+Then, for all <span class="math inline">\(\epsilon &gt; 0\)</span>, Chebyshev’s inequality gives us
+<span class="math display">\[\begin{equation}
+  \lim_{K \to \infty} P(|B_{K}| &gt; \epsilon) \leq \lim_{K \to \infty} \frac{1}{\epsilon^2} \var(B_{K}) = 0,
+\end{equation}\]</span>
+so
+<span class="math display">\[\begin{equation}
+  B_{K} \xrightarrow[K \to \infty]{\text{p}} 0.
+\end{equation}\]</span>
+Thus, we have
+<span class="math display">\[\begin{equation}
+  \lim_{K \to \infty}\frac{\var (S^{\ast}_{K})}{\var (W_{K})} = 1.
+\end{equation}\]</span>
+Next, we bound the within neighborhood covariances, as we also have
+<span class="math display">\[\begin{equation*}
+\var(W_{Kk}) = \sum_{i \in \mathcal{N}_{K}^d} \sum_{j \in \mathcal{N}_{K}^d} \mathbb{I}(i, j \in A_{k})  \cov(S^{\ast}_{Ki}, S^{\ast}_{Kj}).
+\end{equation*}\]</span>
+As the covariance forms an inner product on the space of square integrable random variables, the Cauchy-Schwarz inequality gives us
+<span class="math display">\[\begin{equation}
+  \mathbb{I}(i, j \in A_{k}) \left| \cov(S^{\ast}_{Ki}, S^{\ast}_{Kj}) \right| \leq \mathbb{I}(i, j \in A_{k}) \sqrt{\var(S^{\ast}_{Ki})} \sqrt{\var(S^{\ast}_{Kj})}.
+\end{equation}\]</span>
+Then, as each <span class="math inline">\(S^{\ast}_{Ki}\)</span> has expectation zero, we know that
+<span class="math display">\[\begin{equation}
+  \var(S^{\ast}_{Ki}) = \mathbb{E}(S^{\ast 2}_{Ki}) - \mathbb{E}(S^{\ast 2}_{Ki}) = \mathbb{E}(S^{\ast 2}_{Ki}).
+\end{equation}\]</span>
+As <span class="math inline">\(S^{\ast 2}_{Ki} \leq 1\)</span>, we know <span class="math inline">\(\var(S^{\ast}_{Ki}) \leq 1\)</span>, so we have the bound
+<span class="math display">\[\begin{equation}
+  \mathbb{I}(i, j \in A_{k}) \left| \cov(S^{\ast}_{Ki}, S^{\ast}_{Kj}) \right| \leq  \mathbb{I}(i, j \in A_{k}).
+\end{equation}\]</span>
+Now all that remains is to apply the Lindeberg-Feller central limit theorem to the double sequence <span class="math inline">\(W_{K} = {\sum_{k = 1}^{K} W_{K, k}}\)</span>. To that end, first note that, as each neighborhood contains at most a finite number of nodes, <span class="math inline">\(M\)</span>, we can show that
+<span class="math display">\[\begin{align}
+    \begin{split}
+    \var(W_{K,k}) &amp;= \sum_{i \in \mathcal{N}_{K}^d} \sum_{j \in \mathcal{N}_{K}^d} \mathbb{I}_{W,k,i,j} \cov(S^{\ast}_{Ki}, S^{\ast}_{Kj}) \\
+    &amp;\leq \sum_{i \in \mathcal{N}_{K}^d} \sum_{j \in \mathcal{N}_{K}^d} \mathbb{I}_{W,k,i,j} \left| \cov(S^{\ast}_{Ki}, S^{\ast}_{Kj}) \right| \\
+    &amp;= \sum_{i \in \mathcal{N}_{K}^d} \sum_{j \in \mathcal{N}_{K}^d} \mathbb{I}_{W,k,i,j} \mathbb{E}(S^{\ast}_{Ki} S^{\ast}_{Kj}) \\
+    &amp;\leq \sum_{i \in \mathcal{N}_{K}^d} \sum_{j \in \mathcal{N}_{K}^d} 1 \\
+    &amp;\leq M^{2d}.
+  \end{split}
+\end{align}\]</span>
+Now we prove that Lyaponouv’s condition <a href="2-locally-dependent-exponential-random-network-models.html#eq:lya">(2.2)</a> holds for the constant in the exponent <span class="math inline">\(\delta = 2\)</span>. So
+<span class="math display" id="eq:lya">\[\begin{align}
+    \begin{split}
+    \lim_{K \to \infty} \sum_{k = 1}^{K} \frac{1}{\var(W_{K})^2} \mathbb{E}(|W_{K,k}|^{4}) &amp;= \lim_{K \to \infty} \frac{1}{\var(W_{K})^2} \sum_{k = 1}^{K}  \mathbb{E}(W_{K,k}^2) \mathbb{E}(W_{K,k}^2) \\
+    &amp;\leq \lim_{K \to \infty} \frac{M^{2d}}{\var(W_{K})^2} \sum_{k = 1}^{K} \mathbb{E}(W_{K,k}^2) \\
+    &amp;= \lim_{K \to \infty} \frac{M^{2d}}{\var(W_{K})^2} \sum_{k = 1}^{K} \var(W_{K,k}) \\
+    &amp;= \lim_{K \to \infty} \frac{M^{2d}}{\var(W_{K})} \\
+    &amp;= 0.
+  \end{split}
+  \tag{2.2}
+\end{align}\]</span>
+Where <span class="math inline">\(\var(W_{K}) \to \infty\)</span> by assumption. Therefore, Lyaponouv’s condition holds, and so by the Lindeberg-Feller central limit theorem, we have,
+<span class="math display">\[\begin{equation}
+  \frac{W_K}{\sqrt{\var(W_K)}} \xrightarrow[K \to \infty]{\text{d}} N(0, 1).
+\end{equation}\]</span>
+Slutsky’s theorem states that, if <span class="math inline">\(W_K \xrightarrow[]{\text{d}} N(0,1)\)</span> and <span class="math inline">\(B_K \xrightarrow[]{\text{p}} 0\)</span> then <span class="math inline">\(W_K + B_K \xrightarrow[]{\text{d}} N(0,1) + 0\)</span>. This gives the final result for <span class="math inline">\(S^{\ast}_{K} = W_{K} + B_{K}\)</span>. Then we have
+<span class="math display">\[\begin{equation}
+  \frac{S^{\ast}_K}{\sqrt{\var(S^{\ast}_K)}} \xrightarrow[K \to \infty]{\text{d}} N(0, 1),
+\end{equation}\]</span>
+as desired.
+</div>
+<p></p>
+The second class of statistics are those that depend on both the graph and the nodal variates. These have a very similar form as the statistics previously considered. Now we require that
+<span class="math display">\[\begin{equation*}
+S_{K} = \sum_{i \in \mathcal{N}^d} S_{Ki},
+\end{equation*}\]</span>
+where
+<span class="math display">\[\begin{equation*}
+S_{Ki} = \prod_{l,p \in i} Y_{lp} h(X_l, X_p),
+\end{equation*}\]</span>
+<p>a product with at most <span class="math inline">\(q\)</span> terms.</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-10" class="theorem"><strong>Theorem 2.8 </strong></span>If <span class="math inline">\(S_K\)</span> is a statistic depending on both the random graph and the random nodal attributes, the sequence of random networks are as before, and the function <span class="math inline">\(h\)</span> is uniformly bounded in the sense that, for all <span class="math inline">\(l\)</span> and <span class="math inline">\(m\)</span>, there is some <span class="math inline">\(B\)</span> such that
+<span class="math display">\[\begin{equation*}
+P \left( |h(X_l, X_m)|^p &gt; B \right) = 0, \qquad (p = 1, 2)
+\end{equation*}\]</span>
+then we also have
+<span class="math display">\[\begin{equation*}
+S_{K} \xrightarrow[K \to \infty]{\mathrm{d}} N(0,1).
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+<div class="proof">
+<span class="proof"><em>Proof. </em></span>  This proof is very similar to the proof of Theorem <a href="2-locally-dependent-exponential-random-network-models.html#thm:norm1">2.7</a>. We write
+<span class="math display">\[\begin{equation*}
+S_{K} = B_{K} + W_{K},
+\end{equation*}\]</span>
+<p>exactly as before, incorporating the function <span class="math inline">\(h\)</span> into each <span class="math inline">\(S_{Ki}\)</span> as we did above. Then the binary nature of the graph and the uniform boundedness of <span class="math inline">\(h\)</span> allow us to once again recenter the <span class="math inline">\(Z_{ij}\)</span>, meaning that we will work with <span class="math inline">\(V_{ij}h(X_i, X_j) = Y_{ij}h(X_i, X_j) - \mu_{ij}\)</span>. We also have <span class="math inline">\(\mathbb{E}(V_{ij} h(X_i, X_j)) = 0\)</span>, so <span class="math inline">\(\mathbb{E}(S_{Ki}) = 0\)</span> as well.</p>
+For the between neighborhood covariances, we once again choose <span class="math inline">\(V_{l_1 l_2}\)</span>, a between neighborhood network variable. Then we once again write
+<span class="math display">\[\begin{align*}
+\cov(S_{Ki}, S_{Kj}) &amp;= \mathbb{E}\left( \prod_{m,n \in i} V_{mn} h(X_m, X_n) \prod_{m,n \in j} V_{mn} h(X_m, X_n) \right) \\
+                     &amp;= \mathbb{E}\left( (V_{l_1 l_2} h(X_{l_1}, X_{l_2}))^p \prod_{m,n \in (i \cup j) \setminus \{l_1, l_2\}} V_{mn} h(X_m, X_n) \right), &amp; (p = 1,2) \\
+                     &amp;= \mathbb{E}\left( (V_{l_1 l_2} h(X_{l_1}, X_{l_2}))^p \right) \mathbb{E} \left( \prod_{m,n \in (i \cup j) \setminus \{l_1, l_2\}} V_{mn} h(X_m, X_n) \right),
+\end{align*}\]</span>
+by the local dependence property. Then, when <span class="math inline">\(p = 1\)</span>, we have <span class="math inline">\(\mathbb{E} ( V_{l_1 l_2} h(X_{l_1}, X_{l_2}) ) = 0\)</span> by assumption, so the covariance is identically zero. When <span class="math inline">\(p = 2\)</span> we have
+<span class="math display">\[\begin{equation*}
+ \mathbb{E}\left( (V_{l_1 l_2} h(X_{l_1}, X_{l_2}))^2 \right) \leq Cn^{-\delta}
+\end{equation*}\]</span>
+by sparsity and
+<span class="math display">\[\begin{equation*}
+\mathbb{E} \left( \prod_{m,n \in (i \cup j) \setminus \{l_1, l_2\}} V_{mn} h(X_m, X_n) \right) \leq (DB)^{2q - 2}
+\end{equation*}\]</span>
+almost surely by uniform boundedness and the fact this product has at most <span class="math inline">\(2q - 2\)</span> terms. This follows from the fact that <span class="math inline">\(h\)</span> is bounded by <span class="math inline">\(B\)</span> and that <span class="math inline">\(V_{mn}\)</span> is bounded by some constant <span class="math inline">\(D\)</span>, by defintion. So
+<span class="math display">\[\begin{equation*}
+\cov(S_{Ki}, S_{Kj}) \leq B^{2q - 2}Cn^{-\delta},
+\end{equation*}\]</span>
+which tends to zero as <span class="math inline">\(K\)</span> grows large. So, again by Chebyshev’s inequality, we have
+<span class="math display">\[\begin{equation*}
+B_{K} \xrightarrow[K \to \infty]{\mathrm{p}} 0.
+\end{equation*}\]</span>
+Next we bound the within neighborhood covariances. Now with each <span class="math inline">\(|S_{Ki}| \leq B^{q}\)</span>, we have
+<span class="math display">\[\begin{equation}
+  \mathbb{I}(i, j \in A_{k}) \left| \cov(S_{Ki}, S_{Kj}) \right| \leq \mathbb{I}(i, j \in A_{k}) B^{2q}.
+\end{equation}\]</span>
+Now, we show that Lyaponouv’s condition <a href="2-locally-dependent-exponential-random-network-models.html#eq:lya">(2.2)</a> holds for the same <span class="math inline">\(\delta = 2\)</span>. Once again note that each neighborhood has at most <span class="math inline">\(M\)</span> nodes, so
+<span class="math display">\[\begin{align*}
+\var(W_{K,k}) &amp;= \sum_{i \in \mathcal{N}_{K}^d} \sum_{j \in \mathcal{N}_{K}^d} \mathbb{I}_{W,k,i,j} \cov(S_{Ki}, S_{Kj}) \\
+    &amp;\leq \sum_{i \in \mathcal{N}_{K}^d} \sum_{j \in \mathcal{N}_{K}^d} \mathbb{I}_{W,k,i,j} \left| \cov(S_{Ki}, S_{Kj}) \right| \\
+    &amp;\leq \sum_{i \in \mathcal{N}_{K}^d} \sum_{j \in \mathcal{N}_{K}^d} \mathbb{I}_{W,k,i,j} B^{2q} \\
+    &amp;\leq M^{2d}B^{2q}.
+\end{align*}\]</span>
+Then Lyaponouv’s condition is
+<span class="math display">\[\begin{align}
+    \begin{split}
+    \lim_{K \to \infty} \sum_{k = 1}^{K} \frac{1}{\var(W_{K})^2} \mathbb{E}(|W_{K,k}|^{4}) &amp;= \lim_{K \to \infty} \frac{1}{\var(W_{K})^2} \sum_{k = 1}^{K}  \mathbb{E}(W_{K,k}^2) \mathbb{E}(W_{K,k}^2) \\
+    &amp;\leq \lim_{K \to \infty} \frac{M^{2d}B^{2q}}{\var(W_{K})^2} \sum_{k = 1}^{K} \mathbb{E}(W_{K,k}^2) \\
+    &amp;= \lim_{K \to \infty} \frac{M^{2d}B^{2q}}{\var(W_{K})^2} \sum_{k = 1}^{K} \var(W_{K,k}) \\
+    &amp;= \lim_{K \to \infty} \frac{M^{2d}B^{2q}}{\var(W_{K})} \label{eq:Lya} \\
+    &amp;= 0.
+  \end{split}
+\end{align}\]</span>
+Therefore, by the Lindeberg-Feller central limit theorem and Slutsky’s theorem, we have
+<span class="math display">\[\begin{equation*}
+\frac{S_{K}^{\ast}}{\sqrt{\var(S_{K}^{\ast})}} \xrightarrow[K \to \infty]{\mathrm{d}} N(0,1).\qedhere
+\end{equation*}\]</span>
+</div>
+<p></p>
+<p>Finally, the last class of statistic is that which depends only on the nodal variates. This result follows directly from a central limit theorem for <span class="math inline">\(M\)</span>-dependent random variables, which can be found in <span class="citation">Billingsley (<a href="#ref-Billingsley1995">1995</a>, p. 364)</span>. Establishing this theorem requires that we assume that the statistic in question depends only on a single variable across nodes. Therefore we assume that the network has only a single nodal covariate.</p>
+
+<div class="theorem">
+<span id="thm:norm3" class="theorem"><strong>Theorem 2.9 </strong></span>Take the sequence <span class="math inline">\(Z_{K}\)</span> as before, and let <span class="math inline">\(X_K\)</span> be the vector of nodal variates for each <span class="math inline">\(Z_{K}\)</span>. Call each entry of this vector <span class="math inline">\(X_{Ki}\)</span>, the variate corresponding to node <span class="math inline">\(i\)</span>. Furthermore, we assume that <span class="math inline">\(\mathbb{E}(X_{Ki}^{12}) &lt; \infty\)</span>, <span class="math inline">\(\mathbb{E}(X_{Ki} = 0)\)</span>. Then,
+<span class="math display">\[\begin{equation*}
+\lim_{K \to \infty}\frac{\var(\sum_{i= 1}^{n} X_{Ki})}{n} = \sigma^2,
+\end{equation*}\]</span>
+where <span class="math inline">\(n = |\mathcal{N}|\)</span>. Furthermore, if <span class="math inline">\(\sigma &gt; 0\)</span>, then
+<span class="math display">\[\begin{equation*}
+\frac{\sum_{i = 1}^{n} X_{Ki}}{\sqrt{n \var(\sum_{i= 1}^{n} X_{Ki})}} \xrightarrow[K \to \infty]{\mathrm{d}} N(0,1).
+\end{equation*}\]</span>
+</div>
+<p></p>
+
+<div class="proof">
+<span class="proof"><em>Proof. </em></span>  Two random variables <span class="math inline">\(X_{Kl}\)</span> and <span class="math inline">\(X_{Kp}\)</span> are dependent if and only if <span class="math inline">\(l\)</span> and <span class="math inline">\(p\)</span> are in the same neighborhood. Without loss of generality, assume that the neighborhoods are such that all nodes within a neighborhood are indexed by consecutive integers. Then let <span class="math inline">\(M = \limsup |A_{K}|\)</span>. Then the sequence <span class="math inline">\(X_{Kl}\)</span> is <span class="math inline">\(M\)</span>-dependent, so the result follows by application of Theorem 27.4 in <span class="citation">Billingsley (<a href="#ref-Billingsley1995">1995</a>)</span>.
+</div>
+<p></p>
+<p>In practice, the hypothesis that the twelfth moment exists is satisfied for most reasonable distributional assumptions about nodal covariates. Furthermore, the assumption that all nodal variates have expectation zero can easily be satisfied by recentering the observed data. Finally, the delta method gives us an asymptotically normal distribution for an differentiable statistic of the nodal variate. The univariate nature of the statistic is a fundamental limitation of this approach, however I am unable to find an analogous multidimensional central limit theorem that would allow us to establish the asymptotic normality of a statistic of multiple nodal variates.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Fellows2012">
+<p>Fellows, I., &amp; Handcock, M. S. (2012). Exponential-family random network models. <em>ArXiv Preprint ArXiv:1208.0121</em>.</p>
+</div>
+<div id="ref-Schweinberger2015">
+<p>Schweinberger, M., &amp; Handcock, M. S. (2015). Local dependence in random graph models: Characterization, properties and statistical inference. <em>Journal of the Royal Statistical Society: Series B (Statistical Methodology)</em>, <em>77</em>(3), 647–676.</p>
+</div>
+<div id="ref-Billingsley1995">
+<p>Billingsley, P. (1995). <em>Probability and measure</em> (3. ed., authorized reprint). New Delhi: Wiley India.</p>
+</div>
+<div id="ref-Shalizi2013">
+<p>Shalizi, C. R., &amp; Rinaldo, A. (2013). Consistency under sampling of exponential random graph models. <em>The Annals of Statistics</em>, <em>41</em>(2), 508–535. <a href="http://doi.org/10.1214/12-AOS1044" class="uri">http://doi.org/10.1214/12-AOS1044</a></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-discussion-and-examples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": "thesis.pdf",
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

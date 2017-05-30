@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Local Dependence in Exponential Random Network Models</title>
+  <meta name="description" content="Local Dependence in Exponential Random Network Models">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Local Dependence in Exponential Random Network Models" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Local Dependence in Exponential Random Network Models" />
+  
+  
+  
+
+<meta name="author" content="Nicholas Solomon">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="A-code.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-graphs"><i class="fa fa-check"></i><b>1.1</b> Random graphs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#network-modeling"><i class="fa fa-check"></i><b>1.2</b> Network modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html"><i class="fa fa-check"></i><b>2</b> Exponential random graph models</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#finding-parameter-estimates"><i class="fa fa-check"></i><b>2.1</b> Finding parameter estimates</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#frequentist-methods"><i class="fa fa-check"></i><b>2.1.1</b> Frequentist methods</a></li>
+<li class="chapter" data-level="2.1.2" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#bayesian-methods"><i class="fa fa-check"></i><b>2.1.2</b> Bayesian methods</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="2-exponential-random-graph-models.html"><a href="2-exponential-random-graph-models.html#examples"><i class="fa fa-check"></i><b>2.2</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html"><i class="fa fa-check"></i><b>3</b> Locally dependent exponential random network models</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#definitions-and-notation"><i class="fa fa-check"></i><b>3.1</b> Definitions and notation</a></li>
+<li class="chapter" data-level="3.2" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#preliminary-theorems"><i class="fa fa-check"></i><b>3.2</b> Preliminary theorems</a></li>
+<li class="chapter" data-level="3.3" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#consistency-under-sampling"><i class="fa fa-check"></i><b>3.3</b> Consistency under sampling</a></li>
+<li class="chapter" data-level="3.4" data-path="3-locally-dependent-exponential-random-network-models.html"><a href="3-locally-dependent-exponential-random-network-models.html#asymptotic-normality-of-statistics"><i class="fa fa-check"></i><b>3.4</b> Asymptotic normality of statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html"><i class="fa fa-check"></i><b>4</b> Discussion and examples</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html#examples-of-convergence"><i class="fa fa-check"></i><b>4.1</b> Examples of convergence</a></li>
+<li class="chapter" data-level="4.2" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html#standard-error-estimation"><i class="fa fa-check"></i><b>4.2</b> Standard error estimation</a></li>
+<li class="chapter" data-level="4.3" data-path="4-discussion-and-examples.html"><a href="4-discussion-and-examples.html#discussion-of-future-work"><i class="fa fa-check"></i><b>4.3</b> Discussion of future work</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-code.html"><a href="A-code.html"><i class="fa fa-check"></i><b>A</b> Code</a><ul>
+<li class="chapter" data-level="A.1" data-path="A-code.html"><a href="A-code.html#network-simulation-code"><i class="fa fa-check"></i><b>A.1</b> Network simulation code</a></li>
+<li class="chapter" data-level="A.2" data-path="A-code.html"><a href="A-code.html#jackknife-standard-error-code"><i class="fa fa-check"></i><b>A.2</b> Jackknife standard error code</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Local Dependence in Exponential Random Network Models</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+
+<p></p>
+<p>  </p>
+
+<div id="refs" class="references">
+<div>
+<p>Billingsley, P. (1995). <em>Probability and measure</em> (3. ed., authorized reprint). New Delhi: Wiley India.</p>
+</div>
+<div>
+<p>Caimo, A., &amp; Friel, N. (2011). Bayesian inference for exponential random graph models. <em>Social Networks</em>, <em>33</em>(1), 41–55. <a href="http://doi.org/10.1016/j.socnet.2010.09.004" class="uri">http://doi.org/10.1016/j.socnet.2010.09.004</a></p>
+</div>
+<div>
+<p>Caimo, A., &amp; Friel, N. (2014). Bergm: Bayesian exponential random graphs in R. <em>Journal of Statistical Software</em>, <em>61</em>(2). Retrieved from <a href="http://www.jstatsoft.org/v61/i02/" class="uri">http://www.jstatsoft.org/v61/i02/</a></p>
+</div>
+<div>
+<p>Eddelbuettel, D. (2013). <em>Seamless R and C++ integration with rcpp</em>. New York: Springer.</p>
+</div>
+<div>
+<p>Eddelbuettel, D., &amp; Francois, R. (2011). Rcpp: Seamless R and C++ integration. <em>Journal of Statistical Software</em>, (40, 8).</p>
+</div>
+<div>
+<p>Fellows, I., &amp; Handcock, M. S. (2012). Exponential-family random network models. <em>ArXiv Preprint ArXiv:1208.0121</em>.</p>
+</div>
+<div>
+<p>Geyer, Charles J., &amp; Thompson, E. A. (1992). Constrained monte carlo maximum likelihood for dependent data. <em>Journal of the Royal Statistical Society. Series B (Methodological)</em>, <em>54</em>(3), 657–699. Retrieved from <a href="http://www.jstor.org/stable/2345852" class="uri">http://www.jstor.org/stable/2345852</a></p>
+</div>
+<div>
+<p>Groendyke, C., Welch, D., &amp; Hunter, D. R. (2012). A network-based analysis of the 1861 Hagelloch measles data. <em>Biometrics</em>, <em>68</em>(3), 755–765. <a href="http://doi.org/10.1111/j.1541-0420.2012.01748.x" class="uri">http://doi.org/10.1111/j.1541-0420.2012.01748.x</a></p>
+</div>
+<div>
+<p>Handcock, M. S., Hunter, D. R., Butts, C. T., Goodreau, S. M., Krivitsky, P. N., &amp; Morris, M. (2016). <em>ergm: Fit, simulate and diagnose exponential-family models for networks</em>. The Statnet Project (<a href="http://www.statnet.org" class="uri">http://www.statnet.org</a>). Retrieved from <a href="http://CRAN.R-project.org/package=ergm" class="uri">http://CRAN.R-project.org/package=ergm</a></p>
+</div>
+<div>
+<p>Hunter, D. R., Handcock, M. S., Butts, C. T., Goodreau, S. M., &amp; Morris, M. (2008). ergm: A package to fit, simulate and diagnose exponential-family models for networks. <em>Journal of Statistical Software</em>, <em>24</em>(3).</p>
+</div>
+<div>
+<p>Ismay, C. (2017). <em>thesisdown: An updated R Markdown thesis template using the bookdown package</em>.</p>
+</div>
+<div>
+<p>Morris, M., Handcock, M. S., &amp; Hunter, D. R. (2008). Specification of exponential-family random graph models: Terms and computational aspects. <em>Journal of Statistical Software</em>, <em>24</em>(4).</p>
+</div>
+<div>
+<p>Murray, I., Ghahramani, Z., &amp; MacKay, D. (2012). MCMC for doubly-intractable distributions. <em>ArXiv Preprint ArXiv:1206.6848</em>.</p>
+</div>
+<div>
+<p>Robinson, D. (2016). <em>Broom: Convert statistical analysis objects into tidy data frames</em>. Retrieved from <a href="https://CRAN.R-project.org/package=broom" class="uri">https://CRAN.R-project.org/package=broom</a></p>
+</div>
+<div>
+<p>Schweinberger, M., &amp; Handcock, M. S. (2015). Local dependence in random graph models: Characterization, properties and statistical inference. <em>Journal of the Royal Statistical Society: Series B (Statistical Methodology)</em>, <em>77</em>(3), 647–676.</p>
+</div>
+<div>
+<p>Shalizi, C. R., &amp; Rinaldo, A. (2013). Consistency under sampling of exponential random graph models. <em>The Annals of Statistics</em>, <em>41</em>(2), 508–535. <a href="http://doi.org/10.1214/12-AOS1044" class="uri">http://doi.org/10.1214/12-AOS1044</a></p>
+</div>
+<div>
+<p>Snijders, T. A. B., &amp; Borgatti, S. P. (1999). Non-parametric standard errors and tests for network statistics. <em>Connections</em>, <em>22</em>(2), 61–70.</p>
+</div>
+<div>
+<p>Strauss, D., &amp; Ikeda, M. (1990). Pseudolikelihood estimation for social networks. <em>Journal of the American Statistical Association</em>, <em>85</em>(409), 204–212. Retrieved from <a href="http://www.jstor.org/stable/2289546" class="uri">http://www.jstor.org/stable/2289546</a></p>
+</div>
+<div>
+<p>Wasserman, L. (2004). <em>All of statistics</em>. New York: Springer-Verlag.</p>
+</div>
+<div>
+<p>Wasserman, S., &amp; Pattison, P. (1996). Logit models and logistic regressions for social networks: I. an introduction to markov graphs and p*. <em>Psychometrika</em>, <em>61</em>(3), 401–425.</p>
+</div>
+<div>
+<p>Wickham, H. (2016a). <em>Purrr: Functional programming tools</em>. Retrieved from <a href="https://CRAN.R-project.org/package=purrr" class="uri">https://CRAN.R-project.org/package=purrr</a></p>
+</div>
+<div>
+<p>Wickham, H. (2016b). <em>Tidyverse: Easily install and load ’tidyverse’ packages</em>. Retrieved from <a href="https://CRAN.R-project.org/package=tidyverse" class="uri">https://CRAN.R-project.org/package=tidyverse</a></p>
+</div>
+<div>
+<p>Xie, Y. (2016). knitr: A general-purpose package for dynamic report generation in R (Version R package version 1.15.19).</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="A-code.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": "thesis.pdf",
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

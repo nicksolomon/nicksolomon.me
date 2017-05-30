@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Local Dependence in Exponential Random Network Models</title>
+  <meta name="description" content="Local Dependence in Exponential Random Network Models">
+  <meta name="generator" content="bookdown 0.3.18 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Local Dependence in Exponential Random Network Models" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Local Dependence in Exponential Random Network Models" />
+  
+  
+  
+
+<meta name="author" content="Nicholas Solomon">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="2-locally-dependent-exponential-random-network-models.html">
+<link rel="next" href="A-code.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-graphs"><i class="fa fa-check"></i><b>1.1</b> Random graphs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#network-modeling"><i class="fa fa-check"></i><b>1.2</b> Network modeling</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#finding-parameter-estimates"><i class="fa fa-check"></i><b>1.3</b> Finding parameter estimates</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#frequentist-methods"><i class="fa fa-check"></i><b>1.3.1</b> Frequentist methods</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#bayesian-methods"><i class="fa fa-check"></i><b>1.3.2</b> Bayesian methods</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#examples"><i class="fa fa-check"></i><b>1.4</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-locally-dependent-exponential-random-network-models.html"><a href="2-locally-dependent-exponential-random-network-models.html"><i class="fa fa-check"></i><b>2</b> Locally dependent exponential random network models</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-locally-dependent-exponential-random-network-models.html"><a href="2-locally-dependent-exponential-random-network-models.html#definitions-and-notation"><i class="fa fa-check"></i><b>2.1</b> Definitions and notation</a></li>
+<li class="chapter" data-level="2.2" data-path="2-locally-dependent-exponential-random-network-models.html"><a href="2-locally-dependent-exponential-random-network-models.html#preliminary-theorems"><i class="fa fa-check"></i><b>2.2</b> Preliminary theorems</a></li>
+<li class="chapter" data-level="2.3" data-path="2-locally-dependent-exponential-random-network-models.html"><a href="2-locally-dependent-exponential-random-network-models.html#consistency-under-sampling"><i class="fa fa-check"></i><b>2.3</b> Consistency under sampling</a></li>
+<li class="chapter" data-level="2.4" data-path="2-locally-dependent-exponential-random-network-models.html"><a href="2-locally-dependent-exponential-random-network-models.html#asymptotic-normality-of-statistics"><i class="fa fa-check"></i><b>2.4</b> Asymptotic normality of statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-discussion-and-examples.html"><a href="3-discussion-and-examples.html"><i class="fa fa-check"></i><b>3</b> Discussion and examples</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-discussion-and-examples.html"><a href="3-discussion-and-examples.html#examples-of-convergence"><i class="fa fa-check"></i><b>3.1</b> Examples of convergence</a></li>
+<li class="chapter" data-level="3.2" data-path="3-discussion-and-examples.html"><a href="3-discussion-and-examples.html#standard-error-estimation"><i class="fa fa-check"></i><b>3.2</b> Standard error estimation</a></li>
+<li class="chapter" data-level="3.3" data-path="3-discussion-and-examples.html"><a href="3-discussion-and-examples.html#discussion-of-future-work"><i class="fa fa-check"></i><b>3.3</b> Discussion of future work</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-code.html"><a href="A-code.html"><i class="fa fa-check"></i><b>A</b> Code</a><ul>
+<li class="chapter" data-level="A.1" data-path="A-code.html"><a href="A-code.html#network-simulation-code"><i class="fa fa-check"></i><b>A.1</b> Network simulation code</a></li>
+<li class="chapter" data-level="A.2" data-path="A-code.html"><a href="A-code.html#jackknife-standard-error-code"><i class="fa fa-check"></i><b>A.2</b> Jackknife standard error code</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Local Dependence in Exponential Random Network Models</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="discussion-and-examples" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Discussion and examples</h1>
+<div id="examples-of-convergence" class="section level2">
+<h2><span class="header-section-number">3.1</span> Examples of convergence</h2>
+<p>In this section we simulate locally dependent random networks and calculate a statistic from each class discussed in Chapter 3. These networks grow larger and larger throughout the simulation, with each having <span class="math inline">\(n\)</span> vertices and <span class="math inline">\(n/10\)</span> neighborhoods, to explore the asymptotic properties of our statistics. The nodes have two attributes. The first is a group, coded as <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>, that effects the network formation. Edges are more likely to form between vertices in the same group. The second is a random attribute, also coded as <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>. This attribute is affected by the network, so nodes are more likely to have a value of one or zero depending on the values of the vertices they are connected to. The C++ and R code used to generate these networks is shown in section <a href="A-code.html#network-simulation-code">A.1</a>. This sort of complex relationship between the vertices and the edges is exactly the kind of generative process that ERNMs hope to capture.</p>
+<p>Figure <a href="3-discussion-and-examples.html#fig:example-net">3.1</a> shows an illustration of a simulated network with 100 vertices. The coloring shows the neighborhood membership of each vertex, while the presence or absence of fill indicates the value of the simulated attribute. Note the clustering of the neighborhoods and the attribute values. This is exactly the kind of joint clustering the locally dependent ERNM models. Furthermore, this also makes very intuitive sense as a realistic network structure. For example, suppose the attribute we are considering is smoking. This network shows that people who are friends with smokers are more likely to smoke themselves. This was the analysis done by <span class="citation">Fellows &amp; Handcock (<a href="#ref-Fellows2012">2012</a>)</span> when introducing the ERNM.</p>
+<p>Adding local dependence to this model is what allows us to show central limit theorems, however. In Figures <a href="3-discussion-and-examples.html#fig:asymp-dens">3.2</a> and <a href="3-discussion-and-examples.html#fig:asymp-qq">3.3</a>, we can see the desired convergence towards a normal distribution that is guaranteed by the theorems proved in Chapter 2. In Figure <a href="3-discussion-and-examples.html#fig:asymp-qq">3.3</a>, the quantile-quantile plots become very linear when the number of nodes reaches 200 and the number of neighborhoods reaches 20. All of the skewness has disappeared by this point and the tails of the distributions are almost perfectly normal. Finally, note that the slope is becoming shallower as the number of vertices grows. This corresponds to the shrinking of the statistic’s variance, which is exactly what we hope to see as we grow the sample size.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-net"></span>
+<img src="thesis_files/figure-html/example-net-1.png" alt="A simulated network with 100 vertices, colored according to neighborhood. The vertex fill indicates the presence or absence of the simulated attribute." width="672" />
+<p class="caption">
+Figure 3.1: A simulated network with 100 vertices, colored according to neighborhood. The vertex fill indicates the presence or absence of the simulated attribute.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:asymp-dens"></span>
+<img src="thesis_files/figure-html/asymp-dens-1.png" alt="Density plots of simulated statistics of locally dependent random networks." width="672" />
+<p class="caption">
+Figure 3.2: Density plots of simulated statistics of locally dependent random networks.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:asymp-qq"></span>
+<img src="thesis_files/figure-html/asymp-qq-1.png" alt="Normal Q-Q plots for simulated statistics of locally dependent random networks." width="672" />
+<p class="caption">
+Figure 3.3: Normal Q-Q plots for simulated statistics of locally dependent random networks.
+</p>
+</div>
+</div>
+<div id="standard-error-estimation" class="section level2">
+<h2><span class="header-section-number">3.2</span> Standard error estimation</h2>
+<p>Given the asymptotic normality, all that remains to make these theorems useful for inference is to find a method to estimate the standard error of a statistic from a single observation. To that end, here we simulate a single network with 200 vertices by the same procedure as above and attempt to recover the standard errors of the statistics. We can compare these estimates to the standard errors of the empirical distributions we found in our previous simulation.</p>
+There are several approaches to approximating the standard errors. The first is to follow the vertex-level jackknife procedure outlined by <span class="citation">Snijders &amp; Borgatti (<a href="#ref-Snijders1999">1999</a>)</span>. This method is a modification of the standard jackknife estimator of standard deviation. At each iteration of the procedure, we remove one vertex from the network and recalculate the statistics of interest. Then we estimate the standard error with the equation
+<span class="math display">\[\begin{equation}
+\widehat{\text{s.e.}} = \sqrt{\frac{n - 2}{2n} \sum_{i = 1}^{n} (g_{-i} - \bar{g})^2},
+\end{equation}\]</span>
+<p>where <span class="math inline">\(g\)</span> is the quantity whose standard error we are approximating and <span class="math inline">\(g_{-i}\)</span> is <span class="math inline">\(g\)</span> calculated with vertex <span class="math inline">\(i\)</span> removed. This differs from the standard jackknife estimator in the multiplicative constant. Heuristically, this constant accounts for the fact that we are seeing much less variation in the jackknife networks than we would expect to see in the true distribution. This follows from the fact that the variance of a statistic of the edge variables is (approximately) inversely proportional to the number of edge variables, <span class="math inline">\(n(n-1)\)</span>, not the number of vertices, <span class="math inline">\(n\)</span> <span class="citation">(Snijders &amp; Borgatti, <a href="#ref-Snijders1999">1999</a>)</span>. We can see in Table <a href="3-discussion-and-examples.html#tab:se-jack">3.1</a> that this procedure underestimates the variance of our statistics.</p>
+<table>
+<caption><span id="tab:se-jack">Table 3.1: </span>Standard error estimates using the jackknife at the vertex level.</caption>
+<thead>
+<tr class="header">
+<th align="left">Statistic</th>
+<th align="right">Simulated standard error</th>
+<th align="right">Jackknife standard error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">% Attribute</td>
+<td align="right">0.0647304</td>
+<td align="right">0.0242058</td>
+</tr>
+<tr class="even">
+<td align="left">Mean degree</td>
+<td align="right">1.1011253</td>
+<td align="right">0.8231390</td>
+</tr>
+<tr class="odd">
+<td align="left">% Hom. ties</td>
+<td align="right">0.0271141</td>
+<td align="right">0.0185213</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:se-jack2">Table 3.2: </span>Standard error estimates using the jackknife at the neighborhood level.</caption>
+<thead>
+<tr class="header">
+<th align="left">Statistic</th>
+<th align="right">Simulated standard error</th>
+<th align="right">Jackknife standard error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">% Attribute</td>
+<td align="right">0.0647304</td>
+<td align="right">0.0687571</td>
+</tr>
+<tr class="even">
+<td align="left">Mean degree</td>
+<td align="right">1.1011253</td>
+<td align="right">1.6604948</td>
+</tr>
+<tr class="odd">
+<td align="left">% Hom. ties</td>
+<td align="right">0.0271141</td>
+<td align="right">0.0249828</td>
+</tr>
+</tbody>
+</table>
+<p>This is most likely because of the dependence between vertices in the process that generated the network.</p>
+The second method is a standard jackknife, but leverages the neighborhood structure and the local dependence of the network. We do this by applying the jackknife at the level of the neighborhoods. That is to say, we remove each neighborhood in turn and recompute the statistic and then compute the jackknife estimator
+<span class="math display">\[\begin{equation}
+\widehat{\text{s.e.}} = \sqrt{\frac{m-1}{m} \sum_{i = 1}^m (g_{-i} - \bar{g})^2},
+\end{equation}\]</span>
+<p>where <span class="math inline">\(m\)</span> is the number of neighborhoods. This process gives much more appropriate estimates, shown in Table <a href="3-discussion-and-examples.html#tab:se-jack2">3.2</a>.</p>
+</div>
+<div id="discussion-of-future-work" class="section level2">
+<h2><span class="header-section-number">3.3</span> Discussion of future work</h2>
+<p>Further development of locally dependent ERNMs for modelling complex social processes will have major impacts in the social sciences. The most pressing issue is the creation of software that allows for estimating parameters in these models. Code for fitting locally dependent ERGMs was developed by <span class="citation">Schweinberger &amp; Handcock (<a href="#ref-Schweinberger2015">2015</a>)</span> and a Markov chain Monte Carlo algorithm for ERNMs was implemented by <span class="citation">Fellows &amp; Handcock (<a href="#ref-Fellows2012">2012</a>)</span>. However, it still remains to combine these two developments to work with locally dependent ERNMs.</p>
+<p>Further mathematical work is also required to extend Theorem <a href="2-locally-dependent-exponential-random-network-models.html#thm:norm3">2.9</a> to statistics involving more than one vertex attribute. This proof requires a multivariate analogue of the central limit theorem for <span class="math inline">\(M\)</span>-dependent random variables. As my adviser told me, where there is a univariate central limit theorem, there is invariably a corresponding multidimensional theorem. However, we are unable to find a proof of this, so that result must be the topic of future work.</p>
+<p>Finally, an investigation into the properties of standard error estimates like those produced above is much needed. Network sample sizes tend to be relatively small, so being forced to aggregate at the neighborhood level is a nontrivial issue. Furthermore, the jackknife procedure is most likely not making full use of all the information available within the observed network. However, a bootstrap procedure is, as far as my research shows, undefined for network data. Difficulty comes from being unable to sample with replacement. If one were to sample a network’s vertices or edges with replacement, most likely duplicate edges would appear in the resampled networks. It is unclear how duplicates should be handled when calculating network statistics, so that sort of procedure is difficult to define.</p>
+
+</div>
+</div>
+
+
+
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Fellows2012">
+<p>Fellows, I., &amp; Handcock, M. S. (2012). Exponential-family random network models. <em>ArXiv Preprint ArXiv:1208.0121</em>.</p>
+</div>
+<div id="ref-Snijders1999">
+<p>Snijders, T. A. B., &amp; Borgatti, S. P. (1999). Non-parametric standard errors and tests for network statistics. <em>Connections</em>, <em>22</em>(2), 61–70.</p>
+</div>
+<div id="ref-Schweinberger2015">
+<p>Schweinberger, M., &amp; Handcock, M. S. (2015). Local dependence in random graph models: Characterization, properties and statistical inference. <em>Journal of the Royal Statistical Society: Series B (Statistical Methodology)</em>, <em>77</em>(3), 647–676.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-locally-dependent-exponential-random-network-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="A-code.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": "thesis.pdf",
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
